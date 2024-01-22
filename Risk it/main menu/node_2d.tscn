@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cldrqljlpws5w"]
+
+[ext_resource type="Texture2D" uid="uid://07y6hyw4mu7x" path="res://main menu/фон.jpg" id="1_lsag0"]
+[ext_resource type="Script" path="res://Button.gd" id="2_qplon"]
+[ext_resource type="Script" path="res://main menu/Button2.gd" id="3_gfrvu"]
+[ext_resource type="Script" path="res://main menu/Button3.gd" id="4_tsfo3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Фон" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(3.84, 3.85714)
+texture = ExtResource("1_lsag0")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 405.0
+offset_top = 246.0
+offset_right = 632.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 30
+text = "PLAY"
+script = ExtResource("2_qplon")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 407.0
+offset_top = 379.0
+offset_right = 634.0
+offset_bottom = 440.0
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+script = ExtResource("3_gfrvu")
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 405.0
+offset_top = 312.0
+offset_right = 632.0
+offset_bottom = 373.0
+theme_override_font_sizes/font_size = 30
+text = "HELP"
+script = ExtResource("4_tsfo3")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
