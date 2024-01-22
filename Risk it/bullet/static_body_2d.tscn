@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxk4vq3s7y01x"]
+
+[ext_resource type="Texture2D" uid="uid://bhojjkcbj8sp3" path="res://icon.svg" id="1_uq6mq"]
+[ext_resource type="Script" path="res://bullet/RigidBody2D.gd" id="2_7u5cj"]
+[ext_resource type="Texture2D" uid="uid://bnblkumlmilye" path="res://bullet/assets/1.png" id="3_oqpcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6wkw"]
+size = Vector2(40, 40)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejquy"]
+radius = 1.0
+height = 4.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_uq6mq")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_n6wkw")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("2_7u5cj")
+start_x = 20
+end_x = 120
+speed = 0.5
+
+[node name="TextureRect" type="TextureRect" parent="RigidBody2D"]
+offset_left = 22.0
+offset_top = 19.0
+offset_right = 24.0
+offset_bottom = 23.0
+rotation = 1.5708
+texture = ExtResource("3_oqpcx")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(20, 20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ejquy")
