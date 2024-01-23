@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtwnvwtylguex"]
+[gd_scene load_steps=4 format=3 uid="uid://dtwnvwtylguex"]
 
 [ext_resource type="PackedScene" uid="uid://b86tv40bs3fs3" path="res://player/player.tscn" id="1_uh1ep"]
 [ext_resource type="PackedScene" uid="uid://b4kcxm0ij7ug8" path="res://block/block.tscn" id="2_gxl83"]
+[ext_resource type="PackedScene" uid="uid://bntpvaa83a4j4" path="res://enemy/enemy.tscn" id="3_3ppia"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,3 +17,27 @@ position = Vector2(128, 600)
 
 [node name="Block3" parent="." instance=ExtResource("2_gxl83")]
 position = Vector2(256, 600)
+
+[node name="Block4" parent="." instance=ExtResource("2_gxl83")]
+position = Vector2(385, 600)
+
+[node name="Block5" parent="." instance=ExtResource("2_gxl83")]
+position = Vector2(512, 600)
+
+[node name="Block6" parent="." instance=ExtResource("2_gxl83")]
+position = Vector2(640, 600)
+
+[node name="Block7" parent="." instance=ExtResource("2_gxl83")]
+position = Vector2(768, 600)
+
+[node name="Block8" parent="." instance=ExtResource("2_gxl83")]
+position = Vector2(896, 600)
+
+[node name="Block9" parent="." instance=ExtResource("2_gxl83")]
+position = Vector2(1024, 600)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("3_3ppia")]
+position = Vector2(960, 584)
+start_x = 832
+end_x = 960
+speed = 1.0
