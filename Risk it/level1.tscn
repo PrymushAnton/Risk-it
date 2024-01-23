@@ -36,8 +36,8 @@ position = Vector2(896, 600)
 [node name="Block9" parent="." instance=ExtResource("2_gxl83")]
 position = Vector2(1024, 600)
 
-[node name="RigidBody2D" parent="." instance=ExtResource("3_3ppia")]
-position = Vector2(960, 584)
+[node name="RigidBody2D" parent="." groups=["enemies"] instance=ExtResource("3_3ppia")]
+position = Vector2(981, 334)
 start_x = 832
 end_x = 960
 speed = 1.0

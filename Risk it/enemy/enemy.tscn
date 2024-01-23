@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4undt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hrw6s"]
+radius = 126.0
+height = 510.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 gravity_scale = 0.0

@@ -12,6 +12,13 @@ func _ready():
 	animation_player = get_node("AnimationPlayer")
 
 func _physics_process(delta):
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		#print("Collided with: ", collision.get_collider().name)
+		if collision.get_collider().is_in_group("enemies"):
+			print(10)
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
