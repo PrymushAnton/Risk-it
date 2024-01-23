@@ -12,7 +12,7 @@ position = Vector2(576, 324)
 scale = Vector2(3.84, 3.85714)
 texture = ExtResource("1_lsag0")
 
-[node name="Button" type="Button" parent="."]
+[node name="Play" type="Button" parent="."]
 offset_left = 405.0
 offset_top = 246.0
 offset_right = 632.0
@@ -21,7 +21,7 @@ theme_override_font_sizes/font_size = 30
 text = "PLAY"
 script = ExtResource("2_qplon")
 
-[node name="Button2" type="Button" parent="."]
+[node name="Quit" type="Button" parent="."]
 offset_left = 407.0
 offset_top = 379.0
 offset_right = 634.0
@@ -30,7 +30,7 @@ theme_override_font_sizes/font_size = 30
 text = "QUIT"
 script = ExtResource("3_gfrvu")
 
-[node name="Button3" type="Button" parent="."]
+[node name="Help" type="Button" parent="."]
 offset_left = 405.0
 offset_top = 312.0
 offset_right = 632.0
@@ -39,5 +39,6 @@ theme_override_font_sizes/font_size = 30
 text = "HELP"
 script = ExtResource("4_tsfo3")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
-[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
+[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="pressed" from="Help" to="Help" method="_on_pressed"]

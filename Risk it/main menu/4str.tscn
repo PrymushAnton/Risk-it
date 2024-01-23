@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://15qxy7c5gshm"]
+
+[ext_resource type="Texture2D" uid="uid://ci21jgadsi4og" path="res://main menu/help/2str.jpg" id="1_lo5bb"]
+[ext_resource type="Script" path="res://main menu/left.gd" id="2_pogsg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="2Str" type="Sprite2D" parent="."]
+position = Vector2(605, 421)
+scale = Vector2(6.54762, 3.72917)
+texture = ExtResource("1_lo5bb")
+
+[node name="left" type="Button" parent="."]
+offset_top = 263.0
+offset_right = 43.0
+offset_bottom = 389.0
+text = "<"
+script = ExtResource("2_pogsg")
+
+[connection signal="pressed" from="left" to="left" method="_on_pressed"]

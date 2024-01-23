@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://kjfb5r55hq1f"]
+
+[ext_resource type="Texture2D" uid="uid://cqt8dpc45j7in" path="res://main menu/help/1str.jpg" id="1_hxnd3"]
+[ext_resource type="Script" path="res://main menu/Button.gd" id="2_jcw1s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="1Str" type="Sprite2D" parent="."]
+position = Vector2(529, 323)
+scale = Vector2(5.84018, 6.03147)
+texture = ExtResource("1_hxnd3")
+
+[node name="right" type="Button" parent="."]
+offset_left = 1109.0
+offset_top = 263.0
+offset_right = 1152.0
+offset_bottom = 389.0
+text = ">"
+script = ExtResource("2_jcw1s")
+
+[connection signal="pressed" from="right" to="right" method="_on_pressed"]

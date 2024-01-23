@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwcdl4a8a2mn1"]
+
+[ext_resource type="Texture2D" uid="uid://cqt8dpc45j7in" path="res://main menu/help/1str.jpg" id="1_e1p5d"]
+[ext_resource type="Script" path="res://main menu/right2.gd" id="2_gfddw"]
+[ext_resource type="Script" path="res://main menu/left2.gd" id="3_3ha6i"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="1Str" type="Sprite2D" parent="."]
+position = Vector2(558, 491)
+scale = Vector2(9.82877, 5.44755)
+texture = ExtResource("1_e1p5d")
+
+[node name="right2" type="Button" parent="."]
+offset_left = 1109.0
+offset_top = 263.0
+offset_right = 1152.0
+offset_bottom = 389.0
+text = ">"
+script = ExtResource("2_gfddw")
+
+[node name="left2" type="Button" parent="."]
+offset_top = 263.0
+offset_right = 43.0
+offset_bottom = 389.0
+text = "<"
+script = ExtResource("3_3ha6i")
+
+[connection signal="pressed" from="right2" to="right2" method="_on_pressed"]
+[connection signal="pressed" from="left2" to="right2" method="_on_left_2_pressed"]
+[connection signal="pressed" from="left2" to="left2" method="_on_pressed"]
