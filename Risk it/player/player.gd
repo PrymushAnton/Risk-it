@@ -8,6 +8,9 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_player
 
+var can_jump = false
+var can_crouch = false
+
 func _ready():
 	animation_player = get_node("AnimationPlayer")
 
@@ -17,11 +20,12 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if can_jump and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	if direction == 1:
@@ -37,3 +41,28 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
+
+
+func _on_move_right_pressed():
+	Input.action_press("ui_right")
+func _on_move_right_released():
+	Input.action_release("ui_right")
+
+
+func _on_jump_pressed():
+	can_jump = true
+func _on_jump_released():
+	can_jump = false
+
+
+func _on_crouch_pressed():
+	can_crouch = true
+func _on_crouch_released():
+	can_crouch = false
+
+
+
+func _on_move_left_pressed():
+	Input.action_press("ui_left")
+func _on_move_left_released():
+	Input.action_release("ui_left")

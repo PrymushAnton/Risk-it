@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b86tv40bs3fs3"]
+[gd_scene load_steps=16 format=3 uid="uid://b86tv40bs3fs3"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_6pjlc"]
 [ext_resource type="Texture2D" uid="uid://dxoqocmdk4e28" path="res://player/assets/player_sprite1.png" id="1_wsyqs"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c5sgbjayuj7mw" path="res://player/assets/player_sprite5.png" id="5_nafc2"]
 [ext_resource type="Texture2D" uid="uid://cmf2nm3kpt2l2" path="res://player/assets/player_sprite6.png" id="6_vgpt8"]
 [ext_resource type="Texture2D" uid="uid://ba0b6jlprlcdq" path="res://player/assets/player_sprite7.png" id="7_globx"]
+[ext_resource type="Texture2D" uid="uid://c7mg208yrc7gk" path="res://player/assets/arrow_right.png" id="9_ult42"]
+[ext_resource type="Texture2D" uid="uid://chq1gabwdpajb" path="res://player/assets/clicked_arrow.png" id="10_4nq21"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2q5h4"]
 animations = [{
@@ -112,5 +114,42 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -8)
 shape = SubResource("CapsuleShape2D_cotdn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="move_right" type="TouchScreenButton" parent="."]
+position = Vector2(-448, 256)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("9_ult42")
+texture_pressed = ExtResource("10_4nq21")
+
+[node name="jump" type="TouchScreenButton" parent="."]
+position = Vector2(-512, 256.083)
+rotation = 4.71239
+scale = Vector2(4.0052, 3.98311)
+texture_normal = ExtResource("9_ult42")
+texture_pressed = ExtResource("10_4nq21")
+
+[node name="crouch" type="TouchScreenButton" parent="."]
+position = Vector2(-448, 256)
+rotation = 1.5708
+scale = Vector2(4, 4)
+texture_normal = ExtResource("9_ult42")
+texture_pressed = ExtResource("10_4nq21")
+
+[node name="move_left" type="TouchScreenButton" parent="."]
+position = Vector2(-512, 320)
+rotation = 3.14159
+scale = Vector2(4, 4)
+texture_normal = ExtResource("9_ult42")
+texture_pressed = ExtResource("10_4nq21")
+
+[connection signal="pressed" from="move_right" to="." method="_on_move_right_pressed"]
+[connection signal="released" from="move_right" to="." method="_on_move_right_released"]
+[connection signal="pressed" from="jump" to="." method="_on_jump_pressed"]
+[connection signal="released" from="jump" to="." method="_on_jump_released"]
+[connection signal="pressed" from="crouch" to="." method="_on_crouch_pressed"]
+[connection signal="released" from="crouch" to="." method="_on_crouch_released"]
+[connection signal="pressed" from="move_left" to="." method="_on_move_left_pressed"]
+[connection signal="released" from="move_left" to="." method="_on_move_left_released"]
