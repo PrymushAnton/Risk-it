@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ig03yu80r1q"
-path="res://.godot/imported/tilesetwithoutbg.png-ed869f75f84ffc2b0e3d08a294d315cd.ctex"
+uid="uid://co3dt3qnxh6x"
+path="res://.godot/imported/ladder.png-cee092b339bc1de6ca3e6f8fb60184eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesetwithoutbg.png"
-dest_files=["res://.godot/imported/tilesetwithoutbg.png-ed869f75f84ffc2b0e3d08a294d315cd.ctex"]
+source_file="res://world/ladder.png"
+dest_files=["res://.godot/imported/ladder.png-cee092b339bc1de6ca3e6f8fb60184eb.ctex"]
 
 [params]
 
