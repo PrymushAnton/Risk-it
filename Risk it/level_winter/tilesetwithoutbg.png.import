@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dylu8ihsoorqu"
-path="res://.godot/imported/platforms_ilia2.png-9a526d56e159ecd131e94e7e20682ceb.ctex"
+uid="uid://5ig03yu80r1q"
+path="res://.godot/imported/tilesetwithoutbg.png-32b4aee324bbd7d229f0fc641388c2b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://platforms_ilia2.png"
-dest_files=["res://.godot/imported/platforms_ilia2.png-9a526d56e159ecd131e94e7e20682ceb.ctex"]
+source_file="res://level_winter/tilesetwithoutbg.png"
+dest_files=["res://.godot/imported/tilesetwithoutbg.png-32b4aee324bbd7d229f0fc641388c2b4.ctex"]
 
 [params]
 

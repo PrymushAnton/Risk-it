@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cevptffpj3dj6"
-path="res://.godot/imported/mountains_a.png-0925f79af6bcff7e6ca9089b0c195572.ctex"
+uid="uid://bisrg1o4wxl4"
+path="res://.godot/imported/5 - Sky_color.png-8a7457305b81b77f374bcf5746f15605.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mountains_a.png"
-dest_files=["res://.godot/imported/mountains_a.png-0925f79af6bcff7e6ca9089b0c195572.ctex"]
+source_file="res://level_winter/5 - Sky_color.png"
+dest_files=["res://.godot/imported/5 - Sky_color.png-8a7457305b81b77f374bcf5746f15605.ctex"]
 
 [params]
 

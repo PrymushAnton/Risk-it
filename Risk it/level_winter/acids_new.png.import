@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqwg7y7qsbyro"
-path="res://.godot/imported/3 - Big_mountain_BG.png-7cdc65da4403f1338bbb9a099a3b5d81.ctex"
+uid="uid://cry2jmn8jt2ge"
+path="res://.godot/imported/acids_new.png-266348e7ed7824c571421ac56d5affa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://3 - Big_mountain_BG.png"
-dest_files=["res://.godot/imported/3 - Big_mountain_BG.png-7cdc65da4403f1338bbb9a099a3b5d81.ctex"]
+source_file="res://level_winter/acids_new.png"
+dest_files=["res://.godot/imported/acids_new.png-266348e7ed7824c571421ac56d5affa3.ctex"]
 
 [params]
 

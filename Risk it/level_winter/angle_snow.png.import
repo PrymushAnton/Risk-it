@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bisrg1o4wxl4"
-path="res://.godot/imported/5 - Sky_color.png-d8c808c4f13e97e51b2c4c54f60d944e.ctex"
+uid="uid://c0r0ka52gonf4"
+path="res://.godot/imported/angle_snow.png-c25223fdf93fb88c9167faa209dd28e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://5 - Sky_color.png"
-dest_files=["res://.godot/imported/5 - Sky_color.png-d8c808c4f13e97e51b2c4c54f60d944e.ctex"]
+source_file="res://level_winter/angle_snow.png"
+dest_files=["res://.godot/imported/angle_snow.png-c25223fdf93fb88c9167faa209dd28e4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx5lv3jtnsifn"
-path="res://.godot/imported/tileset_platformer_ilia2.png-e8452718b83a2c4b2cfe5b261dfd3e04.ctex"
+uid="uid://oriafh74ts44"
+path="res://.godot/imported/chain.png-8338d66db80b61e9d8febb1e6fa4db4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset_platformer_ilia2.png"
-dest_files=["res://.godot/imported/tileset_platformer_ilia2.png-e8452718b83a2c4b2cfe5b261dfd3e04.ctex"]
+source_file="res://level_winter/chain.png"
+dest_files=["res://.godot/imported/chain.png-8338d66db80b61e9d8febb1e6fa4db4e.ctex"]
 
 [params]
 
