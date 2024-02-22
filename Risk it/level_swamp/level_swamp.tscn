@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://btltq2nu0vc44"]
 
-[ext_resource type="Texture2D" uid="uid://dpmcxo0hr3w3b" path="res://platforms.png" id="2_mncs2"]
-[ext_resource type="Texture2D" uid="uid://d22415d7l54oq" path="res://tileset_platformer.png" id="2_ngcrd"]
-[ext_resource type="Texture2D" uid="uid://cxn6f7ii6h7sw" path="res://chain.png" id="3_dgcjm"]
+[ext_resource type="Texture2D" uid="uid://d22415d7l54oq" path="res://level_swamp/tileset_platformer.png" id="1_ylrs4"]
+[ext_resource type="Texture2D" uid="uid://dpmcxo0hr3w3b" path="res://level_swamp/platforms.png" id="2_1rol5"]
+[ext_resource type="Texture2D" uid="uid://cxn6f7ii6h7sw" path="res://level_swamp/chain.png" id="3_4ltkc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8s0rb"]
-texture = ExtResource("2_ngcrd")
+texture = ExtResource("1_ylrs4")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
@@ -386,7 +386,7 @@ texture = ExtResource("2_ngcrd")
 0:29/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sv0ll"]
-texture = ExtResource("2_mncs2")
+texture = ExtResource("2_1rol5")
 0:0/size_in_atlas = Vector2i(4, 1)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -404,7 +404,7 @@ texture = ExtResource("2_mncs2")
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.7279, -8.22012, 13.435, -7.86656, 16.0867, -4.86136, 16.0867, 5.03814, 13.2583, 8.22012, -13.2583, 8.04334, -16.0867, 4.68458, -16.0867, -4.50781)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8hs4"]
-texture = ExtResource("3_dgcjm")
+texture = ExtResource("3_4ltkc")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
