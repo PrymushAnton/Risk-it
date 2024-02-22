@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://d05hbha5xtnrg"]
 
-[ext_resource type="Texture2D" uid="uid://ckgrng7iqfhco" path="res://tileset_platformer.png" id="1_fdvam"]
+[ext_resource type="Texture2D" uid="uid://ckgrng7iqfhco" path="res://level desert and 5-1/tileset_platformer.png" id="1_f7xc7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mg0s7"]
-texture = ExtResource("1_fdvam")
+texture = ExtResource("1_f7xc7")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0

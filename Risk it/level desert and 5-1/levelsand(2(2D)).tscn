@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://csy4mpxabni6e"]
 
-[ext_resource type="Texture2D" uid="uid://brj65e55lerf4" path="res://platform.png" id="5_wpwcu"]
-[ext_resource type="Texture2D" uid="uid://ckgrng7iqfhco" path="res://tileset_platformer.png" id="6_ehj84"]
+[ext_resource type="Texture2D" uid="uid://brj65e55lerf4" path="res://level desert and 5-1/platform.png" id="1_64j02"]
+[ext_resource type="Texture2D" uid="uid://ckgrng7iqfhco" path="res://level desert and 5-1/tileset_platformer.png" id="2_dvnrs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7o0m"]
-texture = ExtResource("5_wpwcu")
+texture = ExtResource("1_64j02")
 0:0/size_in_atlas = Vector2i(4, 1)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -12,7 +12,7 @@ texture = ExtResource("5_wpwcu")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29, -8.25, 28.875, -8, 29.25, -5.125, 31.875, -4.875, 31.875, 4.75, 29, 4.75, 28.6378, 8.13173, -28.875, 8.125, -28.875, 5.125, -31.875, 4.75, -32, -4.875, -29.125, -5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eowvs"]
-texture = ExtResource("6_ehj84")
+texture = ExtResource("2_dvnrs")
 2:7/0 = 0
 2:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:7/0/physics_layer_0/angular_velocity = 0.0
