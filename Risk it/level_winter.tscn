@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://dtwnvwtylguex"]
 
-[ext_resource type="Texture2D" uid="uid://dcaredjsno0hc" path="res://mountains_b.png" id="1_scp0o"]
-[ext_resource type="Texture2D" uid="uid://bisrg1o4wxl4" path="res://5 - Sky_color.png" id="2_6agyn"]
-[ext_resource type="Texture2D" uid="uid://dw03w1s2o8h2v" path="res://tileset_platformer.png" id="3_7cpob"]
-[ext_resource type="Texture2D" uid="uid://c0r0ka52gonf4" path="res://angle_snow.png" id="4_5bj22"]
-[ext_resource type="Texture2D" uid="uid://cry2jmn8jt2ge" path="res://acids_new.png" id="5_nsc4w"]
-[ext_resource type="Texture2D" uid="uid://cqs82bkrb5dpv" path="res://platforms.png" id="6_hdrrp"]
-[ext_resource type="Texture2D" uid="uid://oriafh74ts44" path="res://chain.png" id="7_cpshn"]
+[ext_resource type="Texture2D" uid="uid://dcaredjsno0hc" path="res://mountains_b.png" id="1_gmqt7"]
+[ext_resource type="Texture2D" uid="uid://bisrg1o4wxl4" path="res://5 - Sky_color.png" id="2_c6sxb"]
+[ext_resource type="Texture2D" path="res://tileset_platformer.png" id="3_v2w5i"]
+[ext_resource type="Texture2D" uid="uid://c0r0ka52gonf4" path="res://angle_snow.png" id="4_yp5qy"]
+[ext_resource type="Texture2D" uid="uid://cry2jmn8jt2ge" path="res://acids_new.png" id="5_tx2ik"]
+[ext_resource type="Texture2D" path="res://platforms.png" id="6_172fg"]
+[ext_resource type="Texture2D" path="res://chain.png" id="7_drdyu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3chrv"]
-texture = ExtResource("3_7cpob")
+texture = ExtResource("3_v2w5i")
 2:7/0 = 0
 2:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:7/0/physics_layer_0/angular_velocity = 0.0
@@ -317,7 +317,7 @@ texture = ExtResource("3_7cpob")
 0:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(21.9375, 3.9375, 24, 2.9375, 24.9375, 2.0625, 26, 0.0625, 26, -4, 24.9375, -6, 24, -7, 22.0625, -7.0625, 21.875, -8, 15, -8.0625, 11, -8.125, 2.4375, -8, -27.125, -8.0625, -32.0625, -6.9375, -38.0625, -7, -39.9375, -4.75, -39.9375, -0.9375, -38, 1, -33.875, 0.9375, -32.25, 2.875, -28, 3.0625, -18.1875, 3.875, -15, 7.0625, -13, 8, -9, 8, 5, 8, 6, 7.0625, 7.0625, 6.9375, 9.125, 8, 13, 8, 15, 6.9375, 17.0625, 5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvhkn"]
-texture = ExtResource("4_5bj22")
+texture = ExtResource("4_yp5qy")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
@@ -332,7 +332,7 @@ texture = ExtResource("4_5bj22")
 0:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xm50d"]
-texture = ExtResource("5_nsc4w")
+texture = ExtResource("5_tx2ik")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -383,7 +383,7 @@ texture = ExtResource("5_nsc4w")
 7:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8egqi"]
-texture = ExtResource("6_hdrrp")
+texture = ExtResource("6_172fg")
 0:0/size_in_atlas = Vector2i(4, 1)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -398,7 +398,7 @@ texture = ExtResource("6_hdrrp")
 0:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ftwat"]
-texture = ExtResource("7_cpshn")
+texture = ExtResource("7_drdyu")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -417,25 +417,25 @@ sources/5 = SubResource("TileSetAtlasSource_ftwat")
 visible = false
 position = Vector2(2637, -3862.01)
 scale = Vector2(33.9375, 107.093)
-texture = ExtResource("1_scp0o")
+texture = ExtResource("1_gmqt7")
 
 [node name="5-SkyColor3" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(4630.5, 1153.5)
 scale = Vector2(4.19097, 1.26442)
-texture = ExtResource("2_6agyn")
+texture = ExtResource("2_c6sxb")
 
 [node name="5-SkyColor2" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(3436, 181.5)
 scale = Vector2(19.875, 8.52404)
-texture = ExtResource("2_6agyn")
+texture = ExtResource("2_c6sxb")
 
 [node name="5-SkyColor" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-429.875, 254)
 scale = Vector2(7.12587, 9.53365)
-texture = ExtResource("2_6agyn")
+texture = ExtResource("2_c6sxb")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nn0ut")
