@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://0jq0mt1pjqkq"]
 
-[ext_resource type="Texture2D" uid="uid://k0av4bwl2sb" path="res://tileset_platformer.png" id="1_3jjjw"]
-[ext_resource type="Texture2D" uid="uid://crsw27o7xxtt4" path="res://platforms.png" id="2_2wxmq"]
-[ext_resource type="Texture2D" uid="uid://bynkc2ci46ucj" path="res://chain.png" id="3_s4ud0"]
+[ext_resource type="Texture2D" uid="uid://k0av4bwl2sb" path="res://level_guide/tileset_platformer.png" id="1_3jjjw"]
+[ext_resource type="Texture2D" uid="uid://crsw27o7xxtt4" path="res://level_guide/platforms.png" id="2_2wxmq"]
+[ext_resource type="Texture2D" uid="uid://bynkc2ci46ucj" path="res://level_guide/chain.png" id="3_s4ud0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ftpj4"]
 texture = ExtResource("1_3jjjw")
