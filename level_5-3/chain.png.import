@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uv6jpf4r11oq"
-path="res://.godot/imported/tileset_platformer.png-4f985931525d2520611725bac12b8db1.ctex"
+uid="uid://bamptlm3cfoo5"
+path="res://.godot/imported/chain.png-9a5e945005f7e1aeb89c0d4d035e7f55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset_platformer.png"
-dest_files=["res://.godot/imported/tileset_platformer.png-4f985931525d2520611725bac12b8db1.ctex"]
+source_file="res://level_5-3/chain.png"
+dest_files=["res://.godot/imported/chain.png-9a5e945005f7e1aeb89c0d4d035e7f55.ctex"]
 
 [params]
 
