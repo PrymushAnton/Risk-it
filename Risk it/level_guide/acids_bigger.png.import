@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1a4k2wd280yp"
-path="res://.godot/imported/tileset_bigger.png-e4e74a99d83e3ef6a4d93291c0f268f1.ctex"
+uid="uid://dtgu05cysel2p"
+path="res://.godot/imported/acids_bigger.png-afccf44488ab5502855851eba1d218bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level_guide/tileset_bigger.png"
-dest_files=["res://.godot/imported/tileset_bigger.png-e4e74a99d83e3ef6a4d93291c0f268f1.ctex"]
+source_file="res://level_guide/acids_bigger.png"
+dest_files=["res://.godot/imported/acids_bigger.png-afccf44488ab5502855851eba1d218bc.ctex"]
 
 [params]
 
