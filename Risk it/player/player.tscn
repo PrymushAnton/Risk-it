@@ -299,6 +299,7 @@ _data = {
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(795, 421)
 script = ExtResource("1_vs1fx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -327,106 +328,177 @@ offset_left = -274.0
 offset_top = -259.0
 offset_right = 327.0
 offset_bottom = 362.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = -4.0
-offset_right = 602.0
-offset_bottom = 618.0
-
-[node name="TextureRect" type="TextureRect" parent="Control/Panel"]
-layout_mode = 0
-offset_left = -126.0
-offset_top = -12.0
-offset_right = 728.0
-offset_bottom = 694.0
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0132013
+anchor_top = 0.0695793
+anchor_right = -0.0132013
+anchor_bottom = 0.0695793
+offset_left = -141.066
+offset_top = -48.2087
+offset_right = 712.934
+offset_bottom = 657.791
 texture = ExtResource("6_0tp6b")
 expand_mode = 1
 
-[node name="Close" type="Button" parent="Control/Panel"]
-layout_mode = 0
-offset_left = 558.0
-offset_top = 77.0
-offset_right = 611.0
-offset_bottom = 126.0
+[node name="Close" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0363036
+anchor_top = 0.0242718
+anchor_right = -0.0363036
+anchor_bottom = 0.0242718
+offset_left = 553.818
+offset_top = 76.9272
+offset_right = 606.818
+offset_bottom = 125.927
 text = "X"
 
-[node name="Label2" type="Label" parent="Control/Panel"]
+[node name="Sex" type="Label" parent="Control"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 9.0
-offset_top = 141.0
-offset_right = 91.0
-offset_bottom = 190.0
+offset_left = -11.0
+offset_top = 127.0
+offset_right = 115.0
+offset_bottom = 176.0
 theme_override_font_sizes/font_size = 25
-text = "Man"
+text = "Sex: Male"
 uppercase = true
 
-[node name="Label3" type="Label" parent="Control/Panel"]
+[node name="Age" type="Label" parent="Control"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 9.0
-offset_top = 187.0
-offset_right = 77.0
-offset_bottom = 236.0
+offset_left = -11.0
+offset_top = 174.0
+offset_right = 80.0
+offset_bottom = 223.0
 theme_override_font_sizes/font_size = 25
-text = "Age"
+text = "Age: 27"
 uppercase = true
 
-[node name="Label4" type="Label" parent="Control/Panel"]
+[node name="Strenght" type="Label" parent="Control"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 232.0
-offset_right = 184.0
-offset_bottom = 281.0
+offset_left = -11.0
+offset_top = 217.0
+offset_right = 168.0
+offset_bottom = 266.0
 theme_override_font_sizes/font_size = 25
-text = "Strenght"
+text = "Strenght:"
 uppercase = true
 
-[node name="Label5" type="Label" parent="Control/Panel"]
+[node name="Endurance" type="Label" parent="Control"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 4.0
-offset_top = 282.0
-offset_right = 217.0
-offset_bottom = 331.0
+offset_left = -11.0
+offset_top = 295.0
+offset_right = 202.0
+offset_bottom = 344.0
 theme_override_font_sizes/font_size = 25
-text = "Endurance"
+text = "Endurance:"
 uppercase = true
 
-[node name="Label6" type="Label" parent="Control/Panel"]
+[node name="Agility" type="Label" parent="Control"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 6.0
-offset_top = 332.0
-offset_right = 136.0
-offset_bottom = 381.0
+offset_left = -11.0
+offset_top = 261.0
+offset_right = 119.0
+offset_bottom = 310.0
 theme_override_font_sizes/font_size = 25
-text = "Agility"
+text = "Agility:"
 uppercase = true
 
-[node name="Label7" type="Label" parent="Control/Panel"]
+[node name="Items" type="Label" parent="Control"]
 self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 5.0
-offset_top = 396.0
-offset_right = 107.0
-offset_bottom = 445.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0181518
+anchor_top = -0.0453074
+anchor_right = -0.0181518
+anchor_bottom = -0.0453074
+offset_left = -0.0907688
+offset_top = 378.136
+offset_right = 101.909
+offset_bottom = 427.136
 theme_override_font_sizes/font_size = 25
 text = "Items"
 uppercase = true
 
-[node name="Label" type="Label" parent="Control/Panel"]
+[node name="Name" type="Label" parent="Control"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = -2.0
-offset_top = 74.0
-offset_right = 114.0
-offset_bottom = 123.0
+offset_left = -11.0
+offset_top = 88.0
+offset_right = 145.0
+offset_bottom = 137.0
 theme_override_font_sizes/font_size = 25
-text = "Name"
+text = "Name: Leon
+"
 uppercase = true
+
+[node name="SwordP" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 400.0
+offset_right = 50.0
+offset_bottom = 457.0
+
+[node name="ArmorP" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 475.0
+offset_right = 50.0
+offset_bottom = 532.0
+
+[node name="RingP" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 550.0
+offset_right = 50.0
+offset_bottom = 607.0
+
+[node name="Sword" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 412.0
+offset_right = 132.0
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Sword:"
+
+[node name="Armor" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 492.0
+offset_right = 134.0
+offset_bottom = 517.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Armor:"
+
+[node name="Ring" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 565.0
+offset_right = 131.0
+offset_bottom = 588.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ring:"
+
+[node name="Balka" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0133111
+anchor_top = -0.0531401
+anchor_right = -0.0133111
+anchor_bottom = -0.0531401
+offset_left = -8.06656
+offset_top = 363.159
+offset_right = 597.933
+offset_bottom = 376.159
 
 [node name="Node" type="Node" parent="."]
 process_mode = 3
@@ -438,6 +510,7 @@ offset_top = -336.0
 offset_right = -400.0
 offset_bottom = -236.0
 text = "Stats"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Control/Panel/Close" to="Node" method="_on_close_pressed"]
+[connection signal="pressed" from="Control/Close" to="Node" method="_on_close_pressed"]
 [connection signal="pressed" from="Pause" to="Node" method="_on_pause_pressed"]
