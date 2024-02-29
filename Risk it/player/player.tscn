@@ -353,8 +353,8 @@ anchor_right = -0.0363036
 anchor_bottom = 0.0242718
 offset_left = 553.818
 offset_top = 76.9272
-offset_right = 606.818
-offset_bottom = 125.927
+offset_right = 602.818
+offset_bottom = 123.927
 text = "X"
 
 [node name="Gender" type="Label" parent="Control"]
