@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2ahnmk08rg4"]
+
+[ext_resource type="Texture2D" uid="uid://f4ju86ga4ncf" path="res://AcidAnim/acid1.png" id="1_1wris"]
+[ext_resource type="Script" path="res://AcidAnim/Acid.gd" id="1_go8c3"]
+[ext_resource type="Script" path="res://AcidAnim/Area2D.gd" id="1_mv121"]
+[ext_resource type="Texture2D" uid="uid://dmrpm22o1nfi8" path="res://AcidAnim/acid2.png" id="2_78xlx"]
+[ext_resource type="Texture2D" uid="uid://dny338ujtx6rj" path="res://AcidAnim/acid3.png" id="3_ir2yp"]
+[ext_resource type="Texture2D" uid="uid://dxq56qot28wd1" path="res://AcidAnim/acid4.png" id="4_44tun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08am8"]
+size = Vector2(48, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0anq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1wris")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_78xlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ir2yp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_44tun")
+}],
+"loop": true,
+"name": &"Acid",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_6a8fr"]
+resource_name = "Acid"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Acid"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_lu2ii"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bh7yc"]
+_data = {
+"Acid": SubResource("Animation_6a8fr"),
+"RESET": SubResource("Animation_lu2ii")
+}
+
+[node name="Acid" type="Node2D"]
+script = ExtResource("1_go8c3")
+
+[node name="AcidA" type="Area2D" parent="."]
+script = ExtResource("1_mv121")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AcidA"]
+position = Vector2(0, -8.01086e-05)
+shape = SubResource("RectangleShape2D_08am8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AcidA"]
+position = Vector2(0, -6.50008)
+scale = Vector2(1, 1.021)
+sprite_frames = SubResource("SpriteFrames_p0anq")
+animation = &"Acid"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AcidA"]
+libraries = {
+"": SubResource("AnimationLibrary_bh7yc")
+}
+
+[connection signal="body_entered" from="AcidA" to="." method="_on_acid_a_body_entered"]
