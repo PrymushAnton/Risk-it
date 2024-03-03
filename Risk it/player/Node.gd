@@ -2,6 +2,7 @@ extends Node
 
 @onready var stats_menu = $"../Control"
 
+
 @onready var pause_menu = $"../Pause2"
 
 var stats: bool = false
@@ -11,9 +12,9 @@ var pause: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+=======
 func _process(delta):
 
 	if stats == true:
@@ -23,6 +24,7 @@ func _process(delta):
 		get_tree().paused = false
 		stats_menu.hide()
 		
+
 	if pause == true:
 		get_tree().paused = true
 		pause_menu.show()
@@ -30,10 +32,8 @@ func _process(delta):
 		get_tree().paused = false
 		pause_menu.hide()
 
-
 func _on_pause_pressed():
 	pause = !pause
-
 
 func _on_close_pressed():
 	stats = !stats
