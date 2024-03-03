@@ -231,5 +231,7 @@ mass = 1.0
 start_x = 500
 end_x = 550
 
+
 [node name="Player" parent="." instance=ExtResource("4_0hpk2")]
 position = Vector2(99, 841)
+
