@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0jq0mt1pjqkq"]
+[gd_scene load_steps=24 format=3 uid="uid://0jq0mt1pjqkq"]
 
 [ext_resource type="Texture2D" uid="uid://k0av4bwl2sb" path="res://level_guide/tileset_platformer.png" id="1_3jjjw"]
 [ext_resource type="Texture2D" uid="uid://crsw27o7xxtt4" path="res://level_guide/platforms.png" id="2_2wxmq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xheu45p4a0kr" path="res://player/player.tscn" id="4_0hpk2"]
 [ext_resource type="PackedScene" uid="uid://da8s5kthtknru" path="res://enemy/purple/rigid_body_2d.tscn" id="5_1uh54"]
 [ext_resource type="Script" path="res://level_guide/Area2D.gd" id="6_ko7gw"]
+[ext_resource type="Texture2D" uid="uid://bueevmo22mmoq" path="res://level_guide/money.png" id="7_is8fp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ftpj4"]
 texture = ExtResource("1_3jjjw")
@@ -219,7 +220,85 @@ sources/2 = SubResource("TileSetAtlasSource_txjqb")
 sources/4 = SubResource("TileSetAtlasSource_t7exc")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icrnv"]
-radius = 55.1543
+radius = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6glhw"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(0, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qq18"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(105, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if20s"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(210, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awi03"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(315, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfoja"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(420, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uba0c"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(525, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6boev"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(630, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsqkg"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(735, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27tbo"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(840, 0, 105, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5ne8"]
+atlas = ExtResource("7_is8fp")
+region = Rect2(945, 0, 105, 97)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_irkhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6glhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qq18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if20s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awi03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfoja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uba0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6boev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsqkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27tbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5ne8")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -243,19 +322,45 @@ position = Vector2(801, 516)
 script = ExtResource("6_ko7gw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1418, 837)
+position = Vector2(1433, 880)
 shape = SubResource("CircleShape2D_icrnv")
 
-[node name="Coins" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(1434, 880.5)
+scale = Vector2(0.304762, 0.278351)
+sprite_frames = SubResource("SpriteFrames_irkhw")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.205572
+
+[node name="Area2D2" type="Area2D" parent="."]
+script = ExtResource("6_ko7gw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(304, 881.5)
+shape = SubResource("CircleShape2D_icrnv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D2"]
+position = Vector2(305, 881)
+scale = Vector2(0.304762, 0.278351)
+sprite_frames = SubResource("SpriteFrames_irkhw")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.205572
+
+[node name="Coins" type="Label" parent="." groups=["Label_Coins"]]
+offset_left = 196.0
+offset_top = 333.0
+offset_right = 243.0
+offset_bottom = 356.0
 text = "Coins:"
 
-[node name="Amount" type="Label" parent="."]
-offset_left = 48.0
-offset_top = 2.0
-offset_right = 88.0
-offset_bottom = 25.0
+[node name="Amount" type="Label" parent="." groups=["Label_Coins"]]
+offset_left = 246.0
+offset_top = 333.0
+offset_right = 286.0
+offset_bottom = 356.0
 text = "0"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
