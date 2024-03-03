@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=34 format=3 uid="uid://xheu45p4a0kr"]
 
 [ext_resource type="Texture2D" uid="uid://d2ud4efohymro" path="res://player/assets/Char-airattack.png" id="1_n0e6y"]
@@ -299,7 +300,9 @@ _data = {
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+
 position = Vector2(795, 421)
+
 script = ExtResource("1_vs1fx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -319,6 +322,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
 
 [node name="Control" type="Control" parent="."]
 process_mode = 2
@@ -554,3 +558,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Pause" to="Node" method="_on_pause_pressed"]
 [connection signal="pressed" from="Pause2/Panel/Resume" to="Node" method="_on_resume_pressed"]
 [connection signal="pressed" from="Stats" to="Node" method="_on_stats_pressed"]
+
