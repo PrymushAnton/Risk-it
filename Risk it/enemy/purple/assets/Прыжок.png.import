@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://boj47qx75i16b"
-
-path="res://.godot/imported/Char-run-.png-960164bc338256c979cfd3eb8d104988.ctex"
+uid="uid://jg41x6yiqgcj"
+path="res://.godot/imported/Прыжок.png-c111e91e1303aba46073fd73ea49ffb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/assets/Char-run-.png"
-dest_files=["res://.godot/imported/Char-run-.png-960164bc338256c979cfd3eb8d104988.ctex"]
+source_file="res://enemy/purple/assets/Прыжок.png"
+dest_files=["res://.godot/imported/Прыжок.png-c111e91e1303aba46073fd73ea49ffb0.ctex"]
 
 [params]
 

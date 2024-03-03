@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://boj47qx75i16b"
-
-path="res://.godot/imported/Char-run-.png-960164bc338256c979cfd3eb8d104988.ctex"
+uid="uid://c4lg1r0neb0w4"
+path="res://.godot/imported/idle.png-52abc13510b80a5d3dfcd5d4bebb760e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/assets/Char-run-.png"
-dest_files=["res://.godot/imported/Char-run-.png-960164bc338256c979cfd3eb8d104988.ctex"]
+source_file="res://enemy/lightgreen/assets/idle.png"
+dest_files=["res://.godot/imported/idle.png-52abc13510b80a5d3dfcd5d4bebb760e.ctex"]
 
 [params]
 

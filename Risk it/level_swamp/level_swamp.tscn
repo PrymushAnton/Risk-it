@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://btltq2nu0vc44"]
+[gd_scene load_steps=9 format=3 uid="uid://btltq2nu0vc44"]
 
+[ext_resource type="Script" path="res://level_swamp/Node.gd" id="1_lce0t"]
 [ext_resource type="Texture2D" uid="uid://d22415d7l54oq" path="res://level_swamp/tileset_platformer.png" id="1_ylrs4"]
 [ext_resource type="Texture2D" uid="uid://dpmcxo0hr3w3b" path="res://level_swamp/platforms.png" id="2_1rol5"]
 [ext_resource type="Texture2D" uid="uid://cxn6f7ii6h7sw" path="res://level_swamp/chain.png" id="3_4ltkc"]
@@ -418,6 +419,10 @@ sources/8 = SubResource("TileSetAtlasSource_c8hs4")
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 193)
 
+[node name="Node" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("1_lce0t")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3023, 880)
 
@@ -431,3 +436,44 @@ layer_0/tile_data = PackedInt32Array(2621553, 131078, 7, 2687089, 131078, 7, 275
 layer_1/name = "1"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(2097445, 720902, 13, 2097455, 589830, 13, 4849951, 720902, 13, 4784413, 720902, 13, 4718876, 720902, 13, 4849963, 589830, 13, 4784429, 589830, 13, 4718894, 589830, 13, 4587715, 196614, 805306389, 4587707, 196614, 805306389, 4587697, 196614, 805306389, 5832881, 196614, 21, 3342451, 196614, 1342177301, 3997897, 589830, 13, 4063431, 589830, 13, 4128966, 589830, 13, 4194501, 589830, 13, 4194477, 720902, 13, 4128940, 720902, 13, 4063402, 720902, 13, 3997865, 720902, 13, 3866856, 196614, 805306389, 3539177, 196614, 21, 3539176, 196614, 21, 3539175, 196614, 21, 3801298, 196614, 21, 3866888, 196614, 21, 3211556, 196614, 21, 3211555, 196614, 21, 3211554, 196614, 21, 2294034, 196614, 805306389, 4522263, 196614, 21, 4522262, 196614, 21, 5112066, 196614, 21, 4915419, 196614, 21, 2752658, 196614, 805306389, 2752661, 196614, 805306389, 2752664, 196614, 805306389)
+
+[node name="Control" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 762.0
+offset_top = 40.0
+offset_right = 1951.0
+offset_bottom = 782.0
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 27.0
+offset_right = 836.0
+offset_bottom = 121.0
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 299.0
+offset_right = 713.0
+offset_bottom = 397.0
+text = "Resume"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 5.0
+offset_top = -183.0
+offset_right = 280.0
+offset_bottom = -109.0
+text = "Pause"
+
+[connection signal="pressed" from="Control/Panel/Resume" to="Node" method="_on_resume_pressed"]
+[connection signal="pressed" from="Button" to="Node" method="_on_button_pressed"]
