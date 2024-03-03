@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://xheu45p4a0kr"]
+[gd_scene load_steps=35 format=3 uid="uid://xheu45p4a0kr"]
 
 [ext_resource type="Texture2D" uid="uid://d2ud4efohymro" path="res://player/assets/Char-airattack.png" id="1_n0e6y"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_vs1fx"]
@@ -301,9 +301,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjpih"]
 size = Vector2(27, 54)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_utsmy"]
-size = Vector2(25.5, 54)
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_vs1fx")
 
@@ -457,17 +454,11 @@ text = "Name"
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2DRight" type="CollisionShape2D" parent="Area2D" groups=["Player"]]
-position = Vector2(45, 11)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(44.5, 11)
 shape = SubResource("RectangleShape2D_xjpih")
-disabled = true
-
-[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="Area2D" groups=["Player"]]
-position = Vector2(-45.25, 11)
-shape = SubResource("RectangleShape2D_utsmy")
-disabled = true
 
 [connection signal="pressed" from="Pause" to="Node" method="_on_pause_pressed"]
 [connection signal="pressed" from="Control/Panel/Close" to="Node" method="_on_close_pressed"]
