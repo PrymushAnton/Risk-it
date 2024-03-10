@@ -1,9 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://xheu45p4a0kr"]
+[gd_scene load_steps=43 format=3 uid="uid://xheu45p4a0kr"]
 
 [ext_resource type="Texture2D" uid="uid://d2ud4efohymro" path="res://player/assets/Char-airattack.png" id="1_n0e6y"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_vs1fx"]
 [ext_resource type="Texture2D" uid="uid://b62g7ut27bx21" path="res://player/assets/Char-idle.png" id="2_xj15d"]
 [ext_resource type="Texture2D" uid="uid://cyljx61i5kcii" path="res://player/assets/Char-jump.png" id="3_d25w0"]
+[ext_resource type="Texture2D" uid="uid://cohx8t6ui4sqw" path="res://player/assets/Char-death.png" id="3_u4m6j"]
 [ext_resource type="Texture2D" uid="uid://boj47qx75i16b" path="res://player/assets/Char-run-.png" id="4_f4tx1"]
 [ext_resource type="Texture2D" uid="uid://cco4m1do8vkeb" path="res://player/assets/Свиток.png" id="6_0tp6b"]
 [ext_resource type="Script" path="res://player/Node.gd" id="6_8onij"]
@@ -150,10 +151,52 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_xfusk"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"death"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8hq3l"]
 _data = {
 "RESET": SubResource("Animation_swsjo"),
 "attack": SubResource("Animation_1odqm"),
+"death": SubResource("Animation_xfusk"),
 "idle": SubResource("Animation_65al6"),
 "jump": SubResource("Animation_qo8ae"),
 "run": SubResource("Animation_ynwmu")
@@ -174,6 +217,26 @@ region = Rect2(96, 0, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_42v4n"]
 atlas = ExtResource("1_n0e6y")
 region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab5t3"]
+atlas = ExtResource("3_u4m6j")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm07a"]
+atlas = ExtResource("3_u4m6j")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyuhs"]
+atlas = ExtResource("3_u4m6j")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jt5g"]
+atlas = ExtResource("3_u4m6j")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4suni"]
+atlas = ExtResource("3_u4m6j")
+region = Rect2(192, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ue00"]
 atlas = ExtResource("2_xj15d")
@@ -248,6 +311,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab5t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm07a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyuhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jt5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4suni")
+}],
+"loop": true,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -333,7 +416,7 @@ libraries = {
 position = Vector2(1, -1)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_71vs3")
-animation = &"attack"
+animation = &"death"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -581,11 +664,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(36.5882, 8.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vn6jw")
-
-[node name="AttackTimerCooldown" type="Timer" parent="AttackArea"]
-wait_time = 0.2
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -599,5 +678,4 @@ wait_time = 0.4
 [connection signal="pressed" from="Pause" to="Node" method="_on_pause_pressed"]
 [connection signal="pressed" from="Pause2/Panel/Resume" to="Node" method="_on_resume_pressed"]
 [connection signal="pressed" from="Stats" to="Node" method="_on_stats_pressed"]
-[connection signal="timeout" from="AttackArea/AttackTimerCooldown" to="." method="_on_attack_timer_cooldown_timeout"]
 [connection signal="timeout" from="Hitbox/Timer" to="." method="_on_timer_timeout"]

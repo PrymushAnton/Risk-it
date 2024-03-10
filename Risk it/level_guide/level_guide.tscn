@@ -617,8 +617,8 @@ layer_1/tile_data = PackedInt32Array(1638374, 393219, 0, 1638377, 393219, 0, 163
 
 [node name="GoblinGreen" parent="." groups=["Enemy"] instance=ExtResource("9_lw02s")]
 position = Vector2(216, 1144)
-strenght = 5
-health = 20
+strenght = 20
+health = 30
 speed = 60
 X = 216
 Y = 1144

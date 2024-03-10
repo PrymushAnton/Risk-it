@@ -1,8 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://dd8ghftla2r0t"]
+[gd_scene load_steps=50 format=3 uid="uid://dd8ghftla2r0t"]
 
 [ext_resource type="Texture2D" uid="uid://b4txka6hfp5w1" path="res://goblin/assets/attack/Goblin-attack (Green).png" id="1_itfby"]
 [ext_resource type="Texture2D" uid="uid://b2itvmyaoi3ec" path="res://goblin/assets/run/Goblin-run (Green).png" id="2_47vji"]
 [ext_resource type="Texture2D" uid="uid://dd1yvlvsw1eac" path="res://goblin/assets/idle/Goblin-idle (Green).png" id="2_gygtg"]
+[ext_resource type="Texture2D" uid="uid://cdy4eq72g230b" path="res://goblin/assets/death/Goblin-death (Green).png" id="2_w60pm"]
+[ext_resource type="Texture2D" uid="uid://cjk400msg8bkc" path="res://goblin/assets/hit/Goblin-hit (Green).png" id="3_ca32h"]
 
 [sub_resource type="GDScript" id="GDScript_5bdrd"]
 resource_name = "goblin_green"
@@ -24,6 +26,7 @@ var attacking = false
 var is_hitted = false
 var can_attack = false
 var can_follow = false
+var is_dead = false
 
 func _ready():
 	animation_player = get_node('AnimationPlayer')
@@ -41,7 +44,8 @@ func hit_of_enemy(damage, enemy, flipped):
 		#$AnimatedSprite2D.flip_h = true
 		enemy.get_parent().velocity = Vector2(-100, 0)
 	if health <= 0:
-		enemy.get_parent().queue_free()
+		#enemy.get_parent().queue_free()
+		is_dead = true
 		
 	
 	
@@ -55,10 +59,13 @@ func end_of_hit_of_enemy():
 		$AttackArea/TimerAttack.start()
 		can_attack = false
 
+func death():
+	queue_free()
+
 
 func _physics_process(delta):
 
-	if player and not attacking and can_follow:
+	if player and not attacking and can_follow and not is_dead:
 		var direction_vector = Vector2(player.position.x - position.x, 0).normalized()
 
 		
@@ -78,22 +85,29 @@ func _physics_process(delta):
 			animation_player.play('run')
 			move_and_slide()
 
-	if not is_on_floor():
+	if not is_on_floor() and not is_dead:
 		can_move = false
 		velocity.y += gravity * delta
 		move_and_slide()
 		
-	if is_on_floor():
+	if is_on_floor() and not is_dead:
 		can_move = true
 	
-	if is_hitted:
+	if is_hitted and not is_dead:
+		animation_player.play(\"hit\")
 		move_and_slide()
 	
-	if attacking and can_attack:
+	if attacking and can_attack and not is_dead and not player.is_dead:
 		animation_player.play(\"attack\")
 		
-	if not can_follow:
+	if not can_follow and not is_dead:
 		animation_player.play(\"idle\")
+		
+	if player.is_dead:
+		animation_player.play(\"idle\")
+	
+	if is_dead:
+		animation_player.play(\"death\")
 
 func _on_timer_timeout():
 	is_hitted = false
@@ -139,6 +153,46 @@ region = Rect2(144, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fm7ek"]
 atlas = ExtResource("1_itfby")
 region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02jbg"]
+atlas = ExtResource("2_w60pm")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsntt"]
+atlas = ExtResource("2_w60pm")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64yct"]
+atlas = ExtResource("2_w60pm")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5s62"]
+atlas = ExtResource("2_w60pm")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lu4v"]
+atlas = ExtResource("2_w60pm")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veibg"]
+atlas = ExtResource("2_w60pm")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j0pc"]
+atlas = ExtResource("2_w60pm")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6ieo"]
+atlas = ExtResource("3_ca32h")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppusa"]
+atlas = ExtResource("3_ca32h")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4hnl"]
+atlas = ExtResource("3_ca32h")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_daqb6"]
 atlas = ExtResource("2_gygtg")
@@ -221,6 +275,46 @@ animations = [{
 "loop": true,
 "name": &"attack",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02jbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsntt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64yct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5s62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lu4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veibg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j0pc")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6ieo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppusa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4hnl")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -347,9 +441,9 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_yjrlg"]
-resource_name = "run"
-length = 0.6
+[sub_resource type="Animation" id="Animation_lhk1h"]
+resource_name = "death"
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -360,7 +454,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"run"]
+"values": [&"death"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -369,10 +463,52 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"death"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yuq7e"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_qnqm4"]
@@ -403,10 +539,40 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_yjrlg"]
+resource_name = "run"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uarvg"]
 _data = {
 "RESET": SubResource("Animation_81rxk"),
 "attack": SubResource("Animation_f0kkl"),
+"death": SubResource("Animation_lhk1h"),
+"hit": SubResource("Animation_yuq7e"),
 "idle": SubResource("Animation_qnqm4"),
 "run": SubResource("Animation_yjrlg")
 }
@@ -436,7 +602,7 @@ shape = SubResource("CapsuleShape2D_vda2l")
 position = Vector2(0, -42)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_fbavt")
-animation = &"attack"
+animation = &"hit"
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -452,7 +618,7 @@ position = Vector2(-5, 0)
 shape = SubResource("CapsuleShape2D_4ekbd")
 
 [node name="Timer" type="Timer" parent="Hitbox"]
-wait_time = 0.4
+wait_time = 0.5
 one_shot = true
 
 [node name="AttackArea" type="Area2D" parent="."]
@@ -475,7 +641,6 @@ shape = SubResource("RectangleShape2D_nh2qc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSightArea"]
 position = Vector2(104.118, -1.7647)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_42py4")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
