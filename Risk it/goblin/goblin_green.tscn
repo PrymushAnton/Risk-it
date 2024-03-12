@@ -1,138 +1,11 @@
 [gd_scene load_steps=50 format=3 uid="uid://dd8ghftla2r0t"]
 
 [ext_resource type="Texture2D" uid="uid://b4txka6hfp5w1" path="res://goblin/assets/attack/Goblin-attack (Green).png" id="1_itfby"]
+[ext_resource type="Script" path="res://goblin/goblin_green.gd" id="1_p2pki"]
 [ext_resource type="Texture2D" uid="uid://b2itvmyaoi3ec" path="res://goblin/assets/run/Goblin-run (Green).png" id="2_47vji"]
 [ext_resource type="Texture2D" uid="uid://dd1yvlvsw1eac" path="res://goblin/assets/idle/Goblin-idle (Green).png" id="2_gygtg"]
 [ext_resource type="Texture2D" uid="uid://cdy4eq72g230b" path="res://goblin/assets/death/Goblin-death (Green).png" id="2_w60pm"]
 [ext_resource type="Texture2D" uid="uid://cjk400msg8bkc" path="res://goblin/assets/hit/Goblin-hit (Green).png" id="3_ca32h"]
-
-[sub_resource type="GDScript" id="GDScript_5bdrd"]
-resource_name = "goblin_green"
-script/source = "extends CharacterBody2D
-
-@export var strenght: int
-@export var health: int
-@export var speed: int
-@export var X: int
-@export var Y: int
-@export var jump_velocity: int
-
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-var animation_player
-var player
-var can_move = true
-#var player_is_alive = true
-var attacking = false
-var is_hitted = false
-var can_attack = false
-var can_follow = false
-var is_dead = false
-
-func _ready():
-	animation_player = get_node('AnimationPlayer')
-	player = get_node('/root/Node2D/CharacterBody2D')
-	position.y = Y
-	position.x = X
-
-func hit_of_enemy(damage, enemy, flipped):
-	is_hitted = true
-	$Hitbox/Timer.start()
-	health -= damage
-	if not flipped:
-		enemy.get_parent().velocity = Vector2(100, 0)
-	if flipped:
-		#$AnimatedSprite2D.flip_h = true
-		enemy.get_parent().velocity = Vector2(-100, 0)
-	if health <= 0:
-		#enemy.get_parent().queue_free()
-		is_dead = true
-		
-	
-	
-func end_of_hit_of_enemy():
-	if can_attack:
-		var overlapping_objects = $AttackArea.get_overlapping_areas()
-		var is_flipped = $AnimatedSprite2D.flip_h
-		for area in overlapping_objects:
-			if area.get_parent().is_in_group('Player') and area.name != \"AttackArea\":
-				area.get_parent().hit(strenght, area.get_parent(), is_flipped)
-		$AttackArea/TimerAttack.start()
-		can_attack = false
-
-func death():
-	queue_free()
-
-
-func _physics_process(delta):
-
-	if player and not attacking and can_follow and not is_dead:
-		var direction_vector = Vector2(player.position.x - position.x, 0).normalized()
-
-		
-		if direction_vector[0] > 0:
-			$AnimatedSprite2D.flip_h = false
-			$AttackArea.scale.x = abs($AttackArea.scale.x)
-			$DetectionArea.scale.x = abs($DetectionArea.scale.x)
-			$EyeSightArea.scale.x = abs($DetectionArea.scale.x)
-		elif direction_vector[0] < 0:
-			$AnimatedSprite2D.flip_h = true
-			$AttackArea.scale.x = abs($AttackArea.scale.x) * -1
-			$DetectionArea.scale.x = abs($DetectionArea.scale.x) * -1
-			$EyeSightArea.scale.x = abs($DetectionArea.scale.x) * -1
-		
-		if can_move and not is_hitted:
-			velocity = direction_vector * speed
-			animation_player.play('run')
-			move_and_slide()
-
-	if not is_on_floor() and not is_dead:
-		can_move = false
-		velocity.y += gravity * delta
-		move_and_slide()
-		
-	if is_on_floor() and not is_dead:
-		can_move = true
-	
-	if is_hitted and not is_dead:
-		animation_player.play(\"hit\")
-		move_and_slide()
-	
-	if attacking and can_attack and not is_dead and not player.is_dead:
-		animation_player.play(\"attack\")
-		
-	if not can_follow and not is_dead:
-		animation_player.play(\"idle\")
-		
-	if player.is_dead:
-		animation_player.play(\"idle\")
-	
-	if is_dead:
-		animation_player.play(\"death\")
-
-func _on_timer_timeout():
-	is_hitted = false
-
-func _on_detection_area_area_entered(area):
-	if area.get_parent().is_in_group(\"Player\") and area.name != \"AttackArea\":
-		attacking = true
-
-func _on_detection_area_area_exited(area):
-	if area.get_parent().is_in_group(\"Player\") and area.name != \"AttackArea\":
-		attacking = false
-
-func _on_timer_attack_timeout():
-	can_attack = true
-
-func _on_eye_sight_area_area_entered(area):
-	if area.get_parent().is_in_group(\"Player\"):
-		can_follow = true
-		can_attack = true
-		
-"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vda2l"]
-radius = 22.0
-height = 60.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flhg5"]
 atlas = ExtResource("1_itfby")
@@ -372,6 +245,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vda2l"]
+radius = 22.0
+height = 60.0
+
 [sub_resource type="Animation" id="Animation_81rxk"]
 length = 0.001
 tracks/0/type = "value"
@@ -585,25 +462,25 @@ height = 64.0
 size = Vector2(8, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh2qc"]
-size = Vector2(8, 51)
+size = Vector2(8, 18.8235)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42py4"]
-size = Vector2(287.059, 64.7059)
+size = Vector2(225.882, 64.7059)
 
 [node name="GoblinGreen" type="CharacterBody2D"]
 scale = Vector2(1.7, 1.7)
-script = SubResource("GDScript_5bdrd")
+script = ExtResource("1_p2pki")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -39.6471)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_fbavt")
+animation = &"death"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("CapsuleShape2D_vda2l")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -42)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_fbavt")
-animation = &"hit"
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -634,13 +511,13 @@ one_shot = true
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(28, 0.5)
+position = Vector2(28, 9.41177)
 shape = SubResource("RectangleShape2D_nh2qc")
 
 [node name="EyeSightArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSightArea"]
-position = Vector2(104.118, -1.7647)
+position = Vector2(75.2941, 1.19209e-07)
 shape = SubResource("RectangleShape2D_42py4")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

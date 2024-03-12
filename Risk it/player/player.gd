@@ -1,16 +1,19 @@
 extends CharacterBody2D
 
 
-var strenght = 0
+var strenght = 120501250125
 
 var agility = 10
 
 var endurance = 10
-var health = 50
+
+var health = 5010240104
+
 var lable
 var lable_text
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var kill_count = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -18,9 +21,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_player
 var player
 var is_hitted = false
-var can_release = false
+#var can_release = false
 var attacking = false
 var is_dead = false
+var can_attack = true
 
 
 
@@ -62,9 +66,14 @@ func end_of_hit():
 			if area.get_parent().is_in_group("Enemy") and area.name != 'AttackArea' and area.name != 'DetectionArea' and area.name != 'EyeSightArea' and area.name == "Hitbox":
 				area.get_parent().hit_of_enemy(strenght, area, is_flipped)
 		attacking = false
+		can_attack = false
+		$AttackArea/AttackTimer.start()
 
 
 func _physics_process(delta):
+	if kill_count == 17:
+		get_tree().change_scene_to_file('res://shop.tscn')
+	
 	if is_dead:
 		animation_player.play("death")
 	
@@ -81,14 +90,13 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 		$AttackArea.scale.x = abs($AttackArea.scale.x) * -1
 		
-	if direction and not is_dead:
-		if not attacking and not is_hitted:
+	if direction:
+		if not attacking and not is_hitted and not is_dead:
 			velocity.x = direction * SPEED
 			if is_on_floor():
 				animation_player.play('run')
 	else:
 		if not attacking and not is_hitted and not is_dead:
-			 #and not is_hitted
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			if is_on_floor():
 				animation_player.play('idle')
@@ -98,11 +106,11 @@ func _physics_process(delta):
 		animation_player.play('jump')
 	
 	if is_hitted and not is_dead:
-		animation_player.play("idle")
+		animation_player.play("hit")
 		
 	if Input.is_action_just_pressed("attack"):
 		 #and can_attack
-		if not direction and not attacking and not is_hitted and not is_dead:
+		if not direction and not attacking and not is_hitted and not is_dead and can_attack:
 			attacking = true
 			
 			
@@ -115,4 +123,7 @@ func _physics_process(delta):
 	
 func _on_timer_timeout():
 	is_hitted = false
-
+	
+	
+func _on_attack_timer_timeout():
+	can_attack = true
