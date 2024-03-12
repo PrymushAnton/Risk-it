@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk13c0rihgxgr"]
+
+[ext_resource type="Script" path="res://traps/black_acid/black_acid.gd" id="1_6nmfk"]
+[ext_resource type="Texture2D" uid="uid://covde06waxene" path="res://traps/black_acid/assets/acid1.png" id="2_pry5k"]
+[ext_resource type="Texture2D" uid="uid://dwg0ln76pov0d" path="res://traps/black_acid/assets/acid2.png" id="3_olwjp"]
+[ext_resource type="Texture2D" uid="uid://bs2ekwqyyc3nh" path="res://traps/black_acid/assets/acid3.png" id="4_qsk5f"]
+[ext_resource type="Texture2D" uid="uid://bke85x3vxin0g" path="res://traps/black_acid/assets/acid4.png" id="5_qaeqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxh4d"]
+size = Vector2(48, 24)
+
+[sub_resource type="Animation" id="Animation_p47kj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_u1eqv"]
+resource_name = "idle"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vk11"]
+_data = {
+"RESET": SubResource("Animation_p47kj"),
+"idle": SubResource("Animation_u1eqv")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fkk3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pry5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_olwjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qsk5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qaeqj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="BlackAcid" type="Node2D"]
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_6nmfk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_xxh4d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0vk11")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fkk3p")
+animation = &"idle"
+frame = 1
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
