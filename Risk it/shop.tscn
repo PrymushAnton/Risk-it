@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cusqpmu5gub40"]
 
-[ext_resource type="Texture2D" uid="uid://dlvwggkrf4n5o" path="res://photo_2024-02-27 19.49.12.jpeg" id="1_g1c7b"]
+[ext_resource type="Texture2D" uid="uid://cb4rfpj4arc4i" path="res://shop.png" id="1_7ovl0"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
-offset_bottom = 999.0
-texture = ExtResource("1_g1c7b")
+offset_bottom = 1080.0
+texture = ExtResource("1_7ovl0")

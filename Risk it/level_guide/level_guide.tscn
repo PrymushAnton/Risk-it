@@ -636,7 +636,7 @@ X = 880
 Y = 1056
 
 [node name="GoblinLightgreen2" parent="." groups=["Enemy"] instance=ExtResource("10_kpay0")]
-position = Vector2(3216, 968)
+position = Vector2(3280, 968)
 strenght = 5
 health = 20
 speed = 80
@@ -645,7 +645,7 @@ Y = 968
 is_rotated = true
 
 [node name="GoblinLightgreen3" parent="." groups=["Enemy"] instance=ExtResource("10_kpay0")]
-position = Vector2(3648, 968)
+position = Vector2(3728, 968)
 strenght = 5
 health = 20
 speed = 80

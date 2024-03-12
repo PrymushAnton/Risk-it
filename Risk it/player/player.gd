@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var strenght = 120501250125
+var strenght = 20
 
 var agility = 10
 
