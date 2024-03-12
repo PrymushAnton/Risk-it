@@ -1,10 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://cusqpmu5gub40"]
+[gd_scene load_steps=3 format=3 uid="uid://cusqpmu5gub40"]
 
+[ext_resource type="Script" path="res://shop.gd" id="1_2ke8v"]
 [ext_resource type="Texture2D" uid="uid://cb4rfpj4arc4i" path="res://shop.png" id="1_7ovl0"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_2ke8v")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_7ovl0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 713.0
+offset_top = 7.0
+offset_right = 775.0
+offset_bottom = 30.0
+scale = Vector2(8.029, 3.88217)
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.215686, 0.0823529, 0.00784314, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_font_sizes/font_size = 14
+text = "Магазин"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 845.0
+offset_top = 94.0
+offset_right = 907.0
+offset_bottom = 117.0
+scale = Vector2(5.349, 3.52217)
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.215686, 0.0823529, 0.00784314, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_font_sizes/font_size = 14
+text = "Мечі"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 810.0
+offset_top = 395.0
+offset_right = 872.0
+offset_bottom = 418.0
+scale = Vector2(5.349, 3.52217)
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.215686, 0.0823529, 0.00784314, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_font_sizes/font_size = 14
+text = "Броня"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 759.0
+offset_top = 700.0
+offset_right = 832.0
+offset_bottom = 723.0
+scale = Vector2(5.349, 3.52217)
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.215686, 0.0823529, 0.00784314, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_font_sizes/font_size = 14
+text = "Аксесуари"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1781.0
+offset_top = 939.0
+offset_right = 1807.0
+offset_bottom = 970.0
+rotation = 0.0104228
+scale = Vector2(3.73684, 3.74033)
+theme_override_colors/font_color = Color(0.313726, 0.8, 0.266667, 1)
+theme_override_colors/icon_normal_color = Color(0.678431, 0.709804, 0.552941, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0.564706, 1)
+text = ">"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 26.0
+offset_top = 939.0
+offset_right = 53.0
+offset_bottom = 970.0
+scale = Vector2(3.73684, 3.74033)
+theme_override_colors/font_color = Color(0.313726, 0.8, 0.266667, 1)
+theme_override_colors/icon_normal_color = Color(0.678431, 0.709804, 0.552941, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0.564706, 1)
+text = "<"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
