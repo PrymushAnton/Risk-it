@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var strenght = 10
 
 var agility = 10
@@ -12,6 +11,7 @@ var lable_text
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -22,9 +22,6 @@ var can_attack = true
 var can_release = false
 var attacking = false
 
-
-
-
 func _ready():
 	animation_player = get_node("AnimationPlayer") 
 	player = get_node('.')
@@ -34,10 +31,9 @@ func _ready():
 	lable.set_text(str(lable_text) + " " + str(strenght))
 	$Control/Endurance.set_text(str($Control/Endurance.get_text()) + " " + str(endurance))
 	$Control/Agility.set_text(str($Control/Agility.get_text()) + " " + str(agility))
-	
+
 
 func hit(damage, enemy, flipped):
-	print(123)
 	health -= damage
 	$Hitbox/Timer.start()
 	is_hitted = true
@@ -62,11 +58,8 @@ func end_of_hit():
 		#can_attack = false
 		#$AttackArea/AttackTimerCooldown.start()
 		
-		
-
-
 func _physics_process(delta):
-
+	print(health)
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -104,14 +97,17 @@ func _physics_process(delta):
 	
 	#if is_hitted:
 		#animation_player.play('idle')
+	if health <= 0:
+		get_tree().change_scene_to_file('res://git.tscn')
 	move_and_slide()
-	
 	
 func _on_timer_timeout():
 	is_hitted = false
 	#can_attack = true
 	#attacking = false
 
-
 func _on_attack_timer_cooldown_timeout():
 	can_attack = true
+
+func health_minus():
+	health = health - 10

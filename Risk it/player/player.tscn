@@ -310,7 +310,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xgtm"]
 radius = 19.0
-height = 94.0
+height = 93.2941
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn6jw"]
 size = Vector2(29.1765, 55)
@@ -581,7 +581,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(36.5882, 8.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vn6jw")
 
 [node name="AttackTimerCooldown" type="Timer" parent="AttackArea"]

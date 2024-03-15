@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyljx61i5kcii"
-path="res://.godot/imported/Char-jump.png-41ab7b7a8b33264cd14188e628b63fe0.ctex"
+uid="uid://p10dcc1steu2"
+path="res://.godot/imported/bullet.png-59a3357eca19ea29292beca1335299f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/assets/Char-jump.png"
-dest_files=["res://.godot/imported/Char-jump.png-41ab7b7a8b33264cd14188e628b63fe0.ctex"]
+source_file="res://purple_goblin/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-59a3357eca19ea29292beca1335299f2.ctex"]
 
 [params]
 

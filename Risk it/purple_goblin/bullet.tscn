@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceors3lw48uty"]
+
+[ext_resource type="Script" path="res://purple_goblin/bullet.gd" id="1_eafkp"]
+[ext_resource type="Texture2D" uid="uid://p10dcc1steu2" path="res://purple_goblin/bullet.png" id="2_h3wpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rpt0"]
+size = Vector2(47, 20)
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_eafkp")
+speed = 250
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -23.0
+offset_top = -10.0
+offset_right = 23.0
+offset_bottom = 10.0
+texture = ExtResource("2_h3wpv")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+offset_left = -23.0
+offset_top = -10.0
+offset_right = 23.0
+offset_bottom = 10.0
+texture = ExtResource("2_h3wpv")
+expand_mode = 1
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3rpt0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.35, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
