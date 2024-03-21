@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://0jq0mt1pjqkq"]
+[gd_scene load_steps=20 format=3 uid="uid://0jq0mt1pjqkq"]
 
 [ext_resource type="Texture2D" uid="uid://b57a8o8ly2iwc" path="res://level_guide/trees.png" id="1_r7v34"]
 [ext_resource type="Texture2D" uid="uid://crsw27o7xxtt4" path="res://level_guide/platforms.png" id="3_ta4il"]
@@ -12,8 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://m8xpg1dm31w4" path="res://traps/spikes/spikes.tscn" id="9_npxck"]
 [ext_resource type="PackedScene" uid="uid://ktbpe3vr4udt" path="res://goblin_purple/goblin_purple.tscn" id="10_hckno"]
 [ext_resource type="PackedScene" uid="uid://b3gs34fkl7xv8" path="res://goblin_lightgreen/goblin_lightgreen.tscn" id="10_kpay0"]
-[ext_resource type="PackedScene" uid="uid://01l0vw7im6lp" path="res://goblin_lightgreen/vivern1.tscn" id="13_ikahx"]
-[ext_resource type="PackedScene" uid="uid://cj0rubpivu22d" path="res://purple_goblin/character_body_2d.tscn" id="14_7arcj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_urdqe"]
 texture = ExtResource("1_r7v34")
@@ -635,7 +633,7 @@ X = 880
 Y = 1056
 
 [node name="GoblinLightgreen2" parent="." groups=["Enemy"] instance=ExtResource("10_kpay0")]
-position = Vector2(3216, 968)
+position = Vector2(3280, 968)
 strenght = 5
 health = 20
 speed = 80
@@ -644,7 +642,7 @@ Y = 968
 is_rotated = true
 
 [node name="GoblinLightgreen3" parent="." groups=["Enemy"] instance=ExtResource("10_kpay0")]
-position = Vector2(3648, 968)
+position = Vector2(3728, 968)
 strenght = 5
 health = 20
 speed = 80
@@ -778,13 +776,4 @@ Y = 624
 is_rotated = true
 
 [node name="CharacterBody2D" parent="." groups=["Player"] instance=ExtResource("6_fg0oh")]
-position = Vector2(-752, 1120)
-
-[node name="Vivern1" parent="." groups=["Enemy"] instance=ExtResource("13_ikahx")]
-position = Vector2(568, 520)
-start_x = 552
-end_x = 712
-
-[node name="Enemy" parent="." groups=["Enemy"] instance=ExtResource("14_7arcj")]
-position = Vector2(-272, 1144)
-is_rotated = true
+position = Vector2(5211, 899)

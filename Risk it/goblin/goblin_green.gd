@@ -41,10 +41,7 @@ func hit_of_enemy(damage, enemy, flipped):
 	if health <= 0:
 		is_dead = true
 		$CollisionShape2D.set_deferred('disabled', true)
-		
-		
-	
-	
+
 func end_of_hit_of_enemy():
 	if can_attack:
 		var overlapping_objects = $AttackArea.get_overlapping_areas()
@@ -58,14 +55,13 @@ func end_of_hit_of_enemy():
 func death():
 	queue_free()
 	player.kill_count += 1
-
+	player.experience += 3
+	player.coins += 3
 
 func _physics_process(delta):
-
 	if player and not attacking and can_follow and not is_dead:
 		var direction_vector = Vector2(player.position.x - position.x, 0).normalized()
 
-		
 		if direction_vector[0] > 0:
 			$AnimatedSprite2D.flip_h = false
 			$AttackArea.scale.x = abs($AttackArea.scale.x)

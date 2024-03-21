@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://xheu45p4a0kr"]
+[gd_scene load_steps=50 format=3 uid="uid://xheu45p4a0kr"]
 
 [ext_resource type="Texture2D" uid="uid://d2ud4efohymro" path="res://player/assets/Char-airattack.png" id="1_n0e6y"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_vs1fx"]
@@ -8,16 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cxc0pt6kdtvxm" path="res://player/assets/Char-hit.png" id="4_25vcf"]
 [ext_resource type="Texture2D" uid="uid://boj47qx75i16b" path="res://player/assets/Char-run-.png" id="4_f4tx1"]
 [ext_resource type="Texture2D" uid="uid://cco4m1do8vkeb" path="res://player/assets/Свиток.png" id="6_0tp6b"]
-[ext_resource type="Script" path="res://player/Camera2D.gd" id="8_ppn4e"]
-[ext_resource type="Texture2D" uid="uid://q2n6x07hdkla" path="res://player/assets/arrow_right.png" id="10_3rsdy"]
-[ext_resource type="Texture2D" uid="uid://4hx3of8mh4" path="res://player/assets/clicked_arrow.png" id="11_4k6xx"]
-[ext_resource type="Texture2D" uid="uid://d0oigtvrcehs7" path="res://player/assets/attack_button.png" id="12_1gftp"]
-[ext_resource type="Texture2D" uid="uid://bhjlyld1j5abe" path="res://player/assets/attack_button_pressed.png" id="13_ky7rd"]
-[ext_resource type="Texture2D" uid="uid://braqw2v482rrf" path="res://player/assets/pause_button_pressed.png" id="14_64kpx"]
-[ext_resource type="Texture2D" uid="uid://baic7tqo5o2v7" path="res://player/assets/pause_button.png" id="15_ceu54"]
-[ext_resource type="Texture2D" uid="uid://dw3eg630pqv0w" path="res://player/assets/healthbarUnder.png" id="16_dgbv0"]
-[ext_resource type="Script" path="res://player/health_bar.gd" id="16_lmvjw"]
-[ext_resource type="Texture2D" uid="uid://cxm5k5ccyxsek" path="res://player/assets/healthbarProgress.png" id="17_b5ffp"]
+[ext_resource type="Script" path="res://player/Node.gd" id="6_8onij"]
+[ext_resource type="Texture2D" uid="uid://baic7tqo5o2v7" path="res://player/assets/pause_button.png" id="9_t84bf"]
+[ext_resource type="PackedScene" uid="uid://cusqpmu5gub40" path="res://shop/shop.tscn" id="12_0icax"]
 
 [sub_resource type="Animation" id="Animation_swsjo"]
 length = 0.001
@@ -200,20 +193,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"end_of_jump"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_ynwmu"]
@@ -472,133 +451,19 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xgtm"]
 radius = 19.0
-height = 75.6471
+height = 94.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn6jw"]
 size = Vector2(29.1765, 55)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l1rph"]
 radius = 19.0
-height = 71.7647
+height = 90.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, -1)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_vs1fx")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -432.0
-offset_top = 180.0
-offset_bottom = 540.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="BoxContainer3" type="BoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -128.0
-offset_bottom = 128.0
-grow_horizontal = 0
-
-[node name="pause" type="TouchScreenButton" parent="CanvasLayer/Control/BoxContainer3"]
-position = Vector2(104, 72)
-rotation = -3.14159
-scale = Vector2(3.4, 3.4)
-texture_normal = ExtResource("14_64kpx")
-texture_pressed = ExtResource("15_ceu54")
-
-[node name="BoxContainer5" type="BoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -200.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -184.0
-offset_right = 448.0
-grow_vertical = 0
-
-[node name="left" type="TouchScreenButton" parent="CanvasLayer/Control/HBoxContainer"]
-position = Vector2(237, 97)
-rotation = 3.14159
-scale = Vector2(6.8, 6.8)
-texture_normal = ExtResource("10_3rsdy")
-texture_pressed = ExtResource("11_4k6xx")
-
-[node name="right" type="TouchScreenButton" parent="CanvasLayer/Control/HBoxContainer"]
-position = Vector2(339, -12)
-scale = Vector2(6.8, 6.8)
-texture_normal = ExtResource("10_3rsdy")
-texture_pressed = ExtResource("11_4k6xx")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 74.0
-offset_bottom = 22.0
-scale = Vector2(4, 4)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-texture_under = ExtResource("16_dgbv0")
-texture_progress = ExtResource("17_b5ffp")
-script = ExtResource("16_lmvjw")
-
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -520.0
-offset_top = -388.0
-grow_horizontal = 0
-grow_vertical = 0
-columns = 2
-
-[node name="attack" type="TouchScreenButton" parent="CanvasLayer/Control/GridContainer"]
-position = Vector2(237, 64)
-rotation = 1.5708
-scale = Vector2(6.8, 6.8)
-texture_normal = ExtResource("12_1gftp")
-texture_pressed = ExtResource("13_ky7rd")
-
-[node name="jump" type="TouchScreenButton" parent="CanvasLayer/Control/GridContainer"]
-position = Vector2(320, 301)
-rotation = -1.5708
-scale = Vector2(6.8, 6.8)
-texture_normal = ExtResource("10_3rsdy")
-texture_pressed = ExtResource("11_4k6xx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -609,236 +474,31 @@ libraries = {
 position = Vector2(1, -1)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_71vs3")
-animation = &"idle"
+animation = &"death"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8.64706)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_8xgtm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 1)
-script = ExtResource("8_ppn4e")
-
-[node name="Control_stats" type="Control" parent="."]
-process_mode = 2
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -274.0
-offset_top = -259.0
-offset_right = 327.0
-offset_bottom = 362.0
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Control_stats"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0132013
-anchor_top = 0.0695793
-anchor_right = -0.0132013
-anchor_bottom = 0.0695793
-offset_left = -141.066
-offset_top = -48.2087
-offset_right = 712.934
-offset_bottom = 657.791
-texture = ExtResource("6_0tp6b")
-expand_mode = 1
-
-[node name="Close" type="Button" parent="Control_stats"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0363036
-anchor_top = 0.0242718
-anchor_right = -0.0363036
-anchor_bottom = 0.0242718
-offset_left = 553.818
-offset_top = 76.9272
-offset_right = 606.818
-offset_bottom = 125.927
-text = "X"
-
-[node name="Gender" type="Label" parent="Control_stats"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -11.0
-offset_top = 127.0
-offset_right = 115.0
-offset_bottom = 176.0
-theme_override_font_sizes/font_size = 25
-text = "Gender: Male"
-uppercase = true
-
-[node name="Age" type="Label" parent="Control_stats"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -11.0
-offset_top = 174.0
-offset_right = 80.0
-offset_bottom = 223.0
-theme_override_font_sizes/font_size = 25
-text = "Age: 27"
-uppercase = true
-
-[node name="Strenght" type="Label" parent="Control_stats"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -11.0
-offset_top = 217.0
-offset_right = 168.0
-offset_bottom = 266.0
-theme_override_font_sizes/font_size = 25
-text = "Strenght:"
-uppercase = true
-
-[node name="Endurance" type="Label" parent="Control_stats"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -11.0
-offset_top = 295.0
-offset_right = 202.0
-offset_bottom = 344.0
-theme_override_font_sizes/font_size = 25
-text = "Endurance:"
-uppercase = true
-
-[node name="Agility" type="Label" parent="Control_stats"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -11.0
-offset_top = 261.0
-offset_right = 119.0
-offset_bottom = 310.0
-theme_override_font_sizes/font_size = 25
-text = "Agility:"
-uppercase = true
-
-[node name="Items" type="Label" parent="Control_stats"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0181518
-anchor_top = -0.0453074
-anchor_right = -0.0181518
-anchor_bottom = -0.0453074
-offset_left = -0.0907688
-offset_top = 378.136
-offset_right = 101.909
-offset_bottom = 427.136
-theme_override_font_sizes/font_size = 25
-text = "Items"
-uppercase = true
-
-[node name="Name" type="Label" parent="Control_stats"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -11.0
-offset_top = 88.0
-offset_right = 145.0
-offset_bottom = 137.0
-theme_override_font_sizes/font_size = 25
-text = "Name: Leon
-"
-uppercase = true
-
-[node name="SwordP" type="Panel" parent="Control_stats"]
-layout_mode = 0
-offset_left = -7.0
-offset_top = 400.0
-offset_right = 50.0
-offset_bottom = 457.0
-
-[node name="ArmorP" type="Panel" parent="Control_stats"]
-layout_mode = 0
-offset_left = -7.0
-offset_top = 475.0
-offset_right = 50.0
-offset_bottom = 532.0
-
-[node name="RingP" type="Panel" parent="Control_stats"]
-layout_mode = 0
-offset_left = -7.0
-offset_top = 550.0
-offset_right = 50.0
-offset_bottom = 607.0
-
-[node name="Sword" type="Label" parent="Control_stats"]
-layout_mode = 0
-offset_left = 77.0
-offset_top = 412.0
-offset_right = 132.0
-offset_bottom = 447.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Sword:"
-
-[node name="Armor" type="Label" parent="Control_stats"]
-layout_mode = 0
-offset_left = 79.0
-offset_top = 492.0
-offset_right = 134.0
-offset_bottom = 517.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Armor:"
-
-[node name="Ring" type="Label" parent="Control_stats"]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 565.0
-offset_right = 131.0
-offset_bottom = 588.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ring:"
-
-[node name="Balka" type="Panel" parent="Control_stats"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0133111
-anchor_top = -0.0531401
-anchor_right = -0.0133111
-anchor_bottom = -0.0531401
-offset_left = -8.06656
-offset_top = 363.159
-offset_right = 597.933
-offset_bottom = 376.159
 
 [node name="Node" type="Node" parent="."]
 process_mode = 3
+script = ExtResource("6_8onij")
 
 [node name="Pause" type="Button" parent="."]
-visible = false
-offset_left = -673.0
-offset_top = -336.0
-offset_right = -400.0
-offset_bottom = -236.0
-text = "Pause"
-
-[node name="Pause_panel" type="Panel" parent="."]
-visible = false
-offset_left = -311.0
-offset_top = -187.0
-offset_right = 310.0
-offset_bottom = 178.0
-
-[node name="Label" type="Label" parent="Pause_panel"]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 12.0
-offset_right = 425.0
-offset_bottom = 92.0
-text = "Paused"
-horizontal_alignment = 1
-
-[node name="Resume" type="Button" parent="Pause_panel"]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 252.0
-offset_right = 522.0
-offset_bottom = 350.0
-text = "Resume"
+offset_left = -564.706
+offset_top = -316.471
+offset_right = -540.706
+offset_bottom = -292.471
+icon = ExtResource("9_t84bf")
+flat = true
+icon_alignment = 1
 
 [node name="Pause2" type="Control" parent="."]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -311.0
@@ -846,14 +506,277 @@ offset_top = -187.0
 offset_right = 316.0
 offset_bottom = 177.0
 
-[node name="Stats" type="Button" parent="."]
-visible = false
-offset_left = 227.0
-offset_top = -315.0
-offset_right = 504.0
-offset_bottom = -219.0
-text = "Stats"
-metadata/_edit_use_anchors_ = true
+[node name="TextureRect" type="TextureRect" parent="Pause2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0132013
+anchor_top = 0.0695793
+anchor_right = -0.0132013
+anchor_bottom = 0.0695793
+offset_left = 86.336
+offset_top = -107.15
+offset_right = 547.336
+offset_bottom = 433.85
+texture = ExtResource("6_0tp6b")
+
+[node name="Experience" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 149.824
+offset_top = -14.7647
+offset_right = 234.824
+offset_bottom = 8.23529
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Experience:"
+
+[node name="Experience_value" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = -15.3529
+offset_right = 281.0
+offset_bottom = 7.64705
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Coins" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 401.0
+offset_top = -14.7647
+offset_right = 448.0
+offset_bottom = 8.23529
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Coins:"
+
+[node name="Coins_Value" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 449.824
+offset_top = -14.1765
+offset_right = 478.824
+offset_bottom = 8.82353
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Upgrade_strenght" type="Button" parent="Pause2"]
+layout_mode = 0
+offset_left = 391.882
+offset_top = 95.824
+offset_right = 466.882
+offset_bottom = 126.824
+text = "Upgrade"
+
+[node name="Upgrade_agility" type="Button" parent="Pause2"]
+layout_mode = 0
+offset_left = 391.882
+offset_top = 128.529
+offset_right = 466.882
+offset_bottom = 159.529
+text = "Upgrade"
+
+[node name="Upgrade_endurance" type="Button" parent="Pause2"]
+layout_mode = 0
+offset_left = 391.882
+offset_top = 162.059
+offset_right = 466.882
+offset_bottom = 193.059
+text = "Upgrade"
+
+[node name="Gender" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 149.235
+offset_top = 36.4118
+offset_right = 331.235
+offset_bottom = 71.4118
+theme_override_font_sizes/font_size = 25
+text = "Gender: Male"
+uppercase = true
+
+[node name="Age" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 152.176
+offset_top = 67.5882
+offset_right = 243.176
+offset_bottom = 102.588
+theme_override_font_sizes/font_size = 25
+text = "Age: 27"
+uppercase = true
+
+[node name="Strenght" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 152.765
+offset_top = 97.0
+offset_right = 288.765
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 25
+text = "Strenght:"
+uppercase = true
+
+[node name="Strenght_value" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 288.647
+offset_top = 98.7647
+offset_right = 342.647
+offset_bottom = 133.765
+theme_override_font_sizes/font_size = 25
+uppercase = true
+
+[node name="Endurance" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 151.588
+offset_top = 159.353
+offset_right = 313.588
+offset_bottom = 194.353
+theme_override_font_sizes/font_size = 25
+text = "Endurance:"
+uppercase = true
+
+[node name="Endurance_value" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 315.0
+offset_top = 161.0
+offset_right = 378.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 25
+uppercase = true
+
+[node name="Agility" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 152.765
+offset_top = 128.765
+offset_right = 253.765
+offset_bottom = 163.765
+theme_override_font_sizes/font_size = 25
+text = "Agility:"
+uppercase = true
+
+[node name="Agility_value" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 255.0
+offset_top = 131.0
+offset_right = 337.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 25
+uppercase = true
+
+[node name="Items" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0181518
+anchor_top = -0.0453074
+anchor_right = -0.0181518
+anchor_bottom = -0.0453074
+offset_left = 285.911
+offset_top = 204.668
+offset_right = 359.911
+offset_bottom = 239.668
+theme_override_font_sizes/font_size = 25
+text = "Items"
+uppercase = true
+
+[node name="Name" type="Label" parent="Pause2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 149.0
+offset_top = 6.0
+offset_right = 225.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 25
+text = "Name: Leon"
+uppercase = true
+
+[node name="SwordP" type="Panel" parent="Pause2"]
+layout_mode = 0
+offset_left = 208.059
+offset_top = 245.235
+offset_right = 233.059
+offset_bottom = 270.235
+
+[node name="ArmorP" type="Panel" parent="Pause2"]
+layout_mode = 0
+offset_left = 208.059
+offset_top = 275.824
+offset_right = 233.059
+offset_bottom = 300.824
+
+[node name="RingP" type="Panel" parent="Pause2"]
+layout_mode = 0
+offset_left = 208.059
+offset_top = 305.824
+offset_right = 233.059
+offset_bottom = 330.824
+
+[node name="Sword" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 152.765
+offset_top = 243.471
+offset_right = 207.765
+offset_bottom = 278.471
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Sword:"
+
+[node name="Armor" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 152.176
+offset_top = 274.647
+offset_right = 207.176
+offset_bottom = 299.647
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Armor:"
+
+[node name="Ring" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 304.529
+offset_right = 207.0
+offset_bottom = 331.529
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ring:"
+
+[node name="hr" type="Panel" parent="Pause2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0133111
+anchor_top = -0.0531401
+anchor_right = -0.0133111
+anchor_bottom = -0.0531401
+offset_left = 172.287
+offset_top = 245.167
+offset_right = 466.287
+offset_bottom = 258.167
+
+[node name="Paused" type="Label" parent="Pause2"]
+layout_mode = 0
+offset_left = 282.765
+offset_top = -55.3529
+offset_right = 339.765
+offset_bottom = -31.3529
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Pause2"]
+layout_mode = 0
+offset_left = 225.118
+offset_top = 405.823
+offset_right = 397.118
+offset_bottom = 444.823
+text = "Resume"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Shop" type="Button" parent="Pause2"]
+layout_mode = 0
+offset_left = 213.353
+offset_top = 351.118
+offset_right = 408.353
+offset_bottom = 383.118
+text = "Shop
+"
 
 [node name="AttackArea" type="Area2D" parent="."]
 
@@ -867,22 +790,22 @@ wait_time = 0.5
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 9.41176)
 shape = SubResource("CapsuleShape2D_l1rph")
 
 [node name="Timer" type="Timer" parent="Hitbox"]
 wait_time = 0.4
 
-[connection signal="pressed" from="CanvasLayer/Control/BoxContainer3/pause" to="." method="_on_pause_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/left" to="." method="_on_left_pressed"]
-[connection signal="released" from="CanvasLayer/Control/HBoxContainer/left" to="." method="_on_left_released"]
-[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/right" to="." method="_on_right_pressed"]
-[connection signal="released" from="CanvasLayer/Control/HBoxContainer/right" to="." method="_on_right_released"]
-[connection signal="pressed" from="CanvasLayer/Control/GridContainer/attack" to="." method="_on_attack_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/GridContainer/jump" to="." method="_on_jump_pressed"]
-[connection signal="pressed" from="Control_stats/Close" to="Node" method="_on_close_pressed"]
+[node name="Shop" parent="." instance=ExtResource("12_0icax")]
+position = Vector2(-564.706, -316.471)
+scale = Vector2(0.6, 0.6)
+
 [connection signal="pressed" from="Pause" to="Node" method="_on_pause_pressed"]
-[connection signal="pressed" from="Pause_panel/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Stats" to="Node" method="_on_stats_pressed"]
+[connection signal="pressed" from="Pause" to="Pause2" method="_on_pause_pressed"]
+[connection signal="pressed" from="Pause2/Upgrade_strenght" to="." method="_on_upgrade_strenght_pressed"]
+[connection signal="pressed" from="Pause2/Upgrade_agility" to="." method="_on_upgrade_agility_pressed"]
+[connection signal="pressed" from="Pause2/Upgrade_endurance" to="." method="_on_upgrade_endurance_pressed"]
+[connection signal="pressed" from="Pause2/Resume" to="Node" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause2/Resume" to="Pause2" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause2/Shop" to="." method="_on_shop_pressed"]
 [connection signal="timeout" from="AttackArea/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Hitbox/Timer" to="." method="_on_timer_timeout"]
