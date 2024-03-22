@@ -21,8 +21,8 @@ func _process(delta):
 
 func _on_pause_pressed():
 	pause_button.modulate = Color(0.8, 0.8, 0.8, 1.0)
-	pause = !pause
+	pause = true
 	
 func _on_resume_pressed():
 	pause_button.modulate = Color(1, 1, 1, 1)
-	pause = !pause 
+	pause = false
