@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgc7kr0mrud0c"
-path="res://.godot/imported/attack_button_pressed.png-48e7339406b779ff5bfc69cf02daa616.ctex"
+uid="uid://p10dcc1steu2"
+path="res://.godot/imported/bullet.png-fe71afaf175626efd8b94e9f946b01ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/assets/attack_button_pressed.png"
-dest_files=["res://.godot/imported/attack_button_pressed.png-48e7339406b779ff5bfc69cf02daa616.ctex"]
+source_file="res://archer_goblin/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-fe71afaf175626efd8b94e9f946b01ce.ctex"]
 
 [params]
 

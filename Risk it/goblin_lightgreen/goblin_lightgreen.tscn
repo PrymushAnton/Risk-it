@@ -520,6 +520,7 @@ size = Vector2(227.647, 62.5882)
 
 [node name="GoblinLightgreen" type="CharacterBody2D"]
 scale = Vector2(1.7, 1.7)
+collision_layer = 2
 script = ExtResource("1_q2vg0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -530,7 +531,7 @@ shape = SubResource("CapsuleShape2D_rw7ei")
 position = Vector2(0, -41.1765)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_n6pj5")
-animation = &"death"
+animation = &"run"
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

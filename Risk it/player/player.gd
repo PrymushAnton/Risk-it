@@ -1,20 +1,22 @@
 extends CharacterBody2D
 
 var pause_menu
-var strenght = 15
-
+var strenght = 50
 
 var agility = 10
 
-var endurance = 50
+var endurance = 1234123131
 var current_hp
 
+var experience: int
+
+var coins: int
 
 var lable
 var lable_text
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-var kill_count = 0
+var end_of_first = false
 var jumping = false
 var can_move = true
 var can_end_jump = false
@@ -38,7 +40,7 @@ func _ready():
 	animation_player = get_node("AnimationPlayer") 
 	player = get_node('.')
 	current_hp = endurance
-	pause_menu = get_node("Pause_panel")
+	#pause_menu = get_node("Pause_panel")
 	
 	#lable = get_node("Control/Strenght")
 	#lable_text = lable.get_text()
@@ -46,15 +48,28 @@ func _ready():
 	#$Control/Endurance.set_text(str($Control/Endurance.get_text()) + " " + str(endurance))
 	#$Control/Agility.set_text(str($Control/Agility.get_text()) + " " + str(agility))
 	
+func hit_by_bullet(damage):
+	velocity.x = move_toward(velocity.x, 0, SPEED)
+	current_hp -= damage
+	is_hitted = true
+	attacking = false
+	can_move = false
+	jumping = false
+	$Hitbox/Timer_bullet.start()
+	if current_hp <= 0:
+		is_dead = true
+		
+
+	
 
 func hit(damage, player_func, flipped):
 
 	current_hp -= damage
 	#losing_hp.emit()
-	
 	is_hitted = true
 	attacking = false
 	can_move = false
+	jumping = false
 	$Hitbox/Timer.start()
 	
 	if not flipped:
@@ -66,7 +81,10 @@ func hit(damage, player_func, flipped):
 		
 
 func death():
-	get_tree().change_scene_to_file("res://git.tscn")
+	Input.action_release("attack")
+	Input.action_release("ui_right")
+	Input.action_release("ui_left")
+	get_tree().change_scene_to_file('res://death_scene.tscn')
 	
 func end_of_jump():
 	can_end_jump = true
@@ -90,6 +108,20 @@ func _physics_process(delta):
 	
 	if current_hp <= 0:
 		is_dead = true
+		
+	#if experience != 0:
+		#$Pause2/Experience_value.set_text(' ' + str(experience))
+		#$Pause2/Upgrade_strenght.disabled = false
+		#$Pause2/Upgrade_agility.disabled = false
+		#$Pause2/Upgrade_endurance.disabled = false
+	#
+	#if coins != 0:
+		#$Pause2/Coins_Value.set_text(' ' + str(coins))
+		#
+	#if experience == 0:
+		#$Pause2/Upgrade_strenght.disabled = true
+		#$Pause2/Upgrade_agility.disabled = true
+		#$Pause2/Upgrade_endurance.disabled = true
 	
 
 	#if pause:
@@ -99,8 +131,8 @@ func _physics_process(delta):
 		#get_tree().paused = false
 		#pause_menu.hide()
 	
-	if kill_count == 17:
-		get_tree().change_scene_to_file('res://shop.tscn')
+	if end_of_first:
+		get_tree().change_scene_to_file("res://shop.tscn")
 	
 	if can_end_jump:
 		if is_on_floor():
@@ -115,11 +147,11 @@ func _physics_process(delta):
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
-	if direction == 1:
+	if direction == 1 and not is_dead and not is_hitted and not attacking:
 		$AnimatedSprite2D.flip_h = false
 		$AttackArea.scale.x = abs($AttackArea.scale.x)
 		
-	elif direction == -1:
+	elif direction == -1 and not is_dead and not is_hitted and not attacking:
 		$AnimatedSprite2D.flip_h = true
 		$AttackArea.scale.x = abs($AttackArea.scale.x) * -1
 		
@@ -183,16 +215,51 @@ func _on_left_released():
 	Input.action_release("ui_left")
 
 
+
 func _on_right_pressed():
 	Input.action_press("ui_right")
 func _on_right_released():
 	Input.action_release("ui_right")
 
 
-func _on_pause_pressed():
-	#pause = true
-	pass
+
 
 #
 #func _on_resume_pressed():
 	#pause = false
+
+
+func _on_timer_bullet_timeout():
+	is_hitted = false
+	can_move = true
+
+#func _on_upgrade_strenght_pressed():
+	#strenght += 1
+	#$Pause2/Strenght_value.set_text(str(strenght))
+	#experience -= 1
+	#$Pause2/Experience_value.set_text(' ' + str(experience))
+	#if experience == 0:
+		#$Pause2/Upgrade_strenght.disabled = true
+		#$Pause2/Upgrade_agility.disabled = true
+		#$Pause2/Upgrade_endurance.disabled = true
+#
+#func _on_upgrade_agility_pressed():
+	#agility += 1
+	#$Pause2/Agility_value.set_text(str(agility))
+	#experience -= 1
+	#$Pause2/Experience_value.set_text(' ' + str(experience))
+	#if experience == 0:
+		#$Pause2/Upgrade_strenght.disabled = true
+		#$Pause2/Upgrade_agility.disabled = true
+		#$Pause2/Upgrade_endurance.disabled = true
+#
+#func _on_upgrade_endurance_pressed():
+	#endurance += 1
+	#$Pause2/Endurance_value.set_text(str(endurance))
+	#experience -= 1
+	#$Pause2/Experience_value.set_text(' ' + str(experience))
+	#if experience == 0:
+		#$Pause2/Upgrade_strenght.disabled = true
+		#$Pause2/Upgrade_agility.disabled = true
+		#$Pause2/Upgrade_endurance.disabled = true
+

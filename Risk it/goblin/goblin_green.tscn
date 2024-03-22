@@ -469,6 +469,7 @@ size = Vector2(225.882, 64.7059)
 
 [node name="GoblinGreen" type="CharacterBody2D"]
 scale = Vector2(1.7, 1.7)
+collision_layer = 2
 script = ExtResource("1_p2pki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

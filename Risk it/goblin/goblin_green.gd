@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var strenght: int
-@export var health: int
-@export var speed: int
+@export var strenght = 10
+@export var health = 30
+@export var speed = 100
 @export var X: int
 @export var Y: int
 @export var jump_velocity: int
-@export var is_rotated: bool
+@export var is_rotated = false
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_player
@@ -22,8 +22,8 @@ var is_dead = false
 func _ready():
 	animation_player = get_node('AnimationPlayer')
 	player = get_node('/root/Node2D/CharacterBody2D')
-	position.y = Y
-	position.x = X
+	#position.y = Y
+	#position.x = X
 	if is_rotated:
 		$AnimatedSprite2D.flip_h = true
 		$AttackArea.scale.x = abs($AttackArea.scale.x) * -1
@@ -57,7 +57,6 @@ func end_of_hit_of_enemy():
 
 func death():
 	queue_free()
-	player.kill_count += 1
 
 
 func _physics_process(delta):

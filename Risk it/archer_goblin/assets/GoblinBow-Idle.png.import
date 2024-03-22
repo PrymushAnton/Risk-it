@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgc7kr0mrud0c"
-path="res://.godot/imported/attack_button_pressed.png-48e7339406b779ff5bfc69cf02daa616.ctex"
+uid="uid://dyhxehfrqprjn"
+path="res://.godot/imported/GoblinBow-Idle.png-188054422566c441dd9ab2d23de46aa6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/assets/attack_button_pressed.png"
-dest_files=["res://.godot/imported/attack_button_pressed.png-48e7339406b779ff5bfc69cf02daa616.ctex"]
+source_file="res://archer_goblin/assets/GoblinBow-Idle.png"
+dest_files=["res://.godot/imported/GoblinBow-Idle.png-188054422566c441dd9ab2d23de46aa6.ctex"]
 
 [params]
 
