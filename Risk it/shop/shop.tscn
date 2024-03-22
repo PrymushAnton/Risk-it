@@ -1,0 +1,174 @@
+[gd_scene load_steps=9 format=3 uid="uid://cusqpmu5gub40"]
+
+[ext_resource type="Texture2D" uid="uid://cb4rfpj4arc4i" path="res://shop/assets/shop.png" id="1_7ovl0"]
+[ext_resource type="Script" path="res://shop/shop.gd" id="1_xsxvs"]
+[ext_resource type="Texture2D" uid="uid://soptpl5a8wsd" path="res://shop/assets/Untitled289_20240125210609.png" id="3_d1v1h"]
+[ext_resource type="Texture2D" uid="uid://c4t424h8uj8cc" path="res://shop/assets/Untitled289_20240125210605.png" id="4_vgqre"]
+[ext_resource type="Texture2D" uid="uid://dxgf16whuern6" path="res://shop/assets/Untitled291_20240128201151.png" id="5_46227"]
+[ext_resource type="Texture2D" uid="uid://ca5cqttrjaxvy" path="res://shop/assets/Untitled308_20240229202357.png" id="6_qtinq"]
+[ext_resource type="Texture2D" uid="uid://cyjm6syrbjlvy" path="res://shop/assets/Untitled308_20240229202617.png" id="7_8o5a7"]
+[ext_resource type="Texture2D" uid="uid://bv8tjxgk5x1ai" path="res://shop/assets/Untitled308_20240229202403.png" id="8_8p40l"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xsxvs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_7ovl0")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 288.0
+offset_top = 96.0
+offset_right = 647.0
+offset_bottom = 247.0
+texture = ExtResource("3_d1v1h")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 774.0
+offset_top = 102.0
+offset_right = 1133.0
+offset_bottom = 253.0
+texture = ExtResource("4_vgqre")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 1394.0
+offset_top = 103.0
+offset_right = 1550.0
+offset_bottom = 231.0
+texture = ExtResource("5_46227")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+offset_left = 366.0
+offset_top = 404.0
+offset_right = 527.0
+offset_bottom = 539.0
+texture = ExtResource("6_qtinq")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+offset_left = 889.0
+offset_top = 431.0
+offset_right = 1050.0
+offset_bottom = 566.0
+texture = ExtResource("7_8o5a7")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+offset_left = 1432.0
+offset_top = 432.0
+offset_right = 1593.0
+offset_bottom = 567.0
+texture = ExtResource("8_8p40l")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 304.0
+offset_top = 264.0
+offset_right = 593.0
+offset_bottom = 345.0
+text = "Buy"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 313.0
+offset_top = 578.0
+offset_right = 602.0
+offset_bottom = 659.0
+text = "Buy"
+
+[node name="Button5" type="Button" parent="."]
+offset_left = 819.0
+offset_top = 580.0
+offset_right = 1108.0
+offset_bottom = 661.0
+text = "Buy"
+
+[node name="Button6" type="Button" parent="."]
+offset_left = 1363.0
+offset_top = 584.0
+offset_right = 1652.0
+offset_bottom = 665.0
+text = "Buy"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 829.0
+offset_top = 265.0
+offset_right = 1118.0
+offset_bottom = 346.0
+text = "Buy"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 1358.0
+offset_top = 266.0
+offset_right = 1647.0
+offset_bottom = 347.0
+text = "Buy"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 337.0
+offset_top = 125.0
+offset_right = 598.0
+offset_bottom = 228.0
+theme_override_font_sizes/font_size = 56
+text = "Куплено"
+
+[node name="Label4" type="Label" parent="."]
+visible = false
+offset_left = 326.0
+offset_top = 437.0
+offset_right = 587.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 56
+text = "Куплено"
+
+[node name="Label5" type="Label" parent="."]
+visible = false
+offset_left = 839.0
+offset_top = 450.0
+offset_right = 1100.0
+offset_bottom = 553.0
+theme_override_font_sizes/font_size = 56
+text = "Куплено"
+
+[node name="Label6" type="Label" parent="."]
+visible = false
+offset_left = 1389.0
+offset_top = 459.0
+offset_right = 1650.0
+offset_bottom = 562.0
+theme_override_font_sizes/font_size = 56
+text = "Куплено"
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+offset_left = 837.0
+offset_top = 137.0
+offset_right = 1098.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 56
+text = "Куплено"
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+offset_left = 1338.0
+offset_top = 132.0
+offset_right = 1599.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 56
+text = "Куплено"
+
+[node name="Menu" type="Button" parent="."]
+offset_left = 862.0
+offset_top = 997.0
+offset_right = 1080.0
+offset_bottom = 1034.0
+text = "Close shop"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

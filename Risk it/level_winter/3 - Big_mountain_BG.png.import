@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyljx61i5kcii"
-path="res://.godot/imported/Char-jump.png-41ab7b7a8b33264cd14188e628b63fe0.ctex"
+uid="uid://dqwg7y7qsbyro"
+path="res://.godot/imported/3 - Big_mountain_BG.png-6f456bdf7ffa685590c18974f12cc9a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/assets/Char-jump.png"
-dest_files=["res://.godot/imported/Char-jump.png-41ab7b7a8b33264cd14188e628b63fe0.ctex"]
+source_file="res://level_winter/3 - Big_mountain_BG.png"
+dest_files=["res://.godot/imported/3 - Big_mountain_BG.png-6f456bdf7ffa685590c18974f12cc9a8.ctex"]
 
 [params]
 

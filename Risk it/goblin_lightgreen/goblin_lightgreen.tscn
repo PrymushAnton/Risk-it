@@ -564,12 +564,14 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(28, 9.41177)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_k6m14")
 
 [node name="EyeSightArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSightArea"]
 position = Vector2(74.4119, -0.705875)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_m40yn")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
