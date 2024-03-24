@@ -45,6 +45,7 @@ alignment = 1
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 6
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 75
 text = "Грати"
 

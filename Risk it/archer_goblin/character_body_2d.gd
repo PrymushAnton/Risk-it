@@ -58,9 +58,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	if raycast.is_colliding():
-		
-		print(raycast.get_collider().is_in_group("Player"))
+	#if raycast.is_colliding():
+		#
+		#print(raycast.get_collider().is_in_group("Player"))
 	if raycast.is_colliding() and raycast.get_collider().is_in_group("Player") and not is_dead and not is_hitted:
 		can_run = true
 		can_run_first = true

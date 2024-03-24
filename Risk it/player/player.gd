@@ -23,6 +23,8 @@ var can_move = true
 var can_end_jump = false
 var kill_count = 0
 
+var pause = false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -34,10 +36,12 @@ var attacking = false
 var is_dead = false
 var can_attack = true
 
+
 func _ready():
 	animation_player = get_node("AnimationPlayer") 
 	player = get_node('.')
 	current_hp = endurance
+	pause_menu = get_node('CanvasLayer/Control/Pause2')
 	#pause_menu = get_node("Pause_panel")
 	
 	#lable = get_node("Control/Strenght")
@@ -48,9 +52,12 @@ func _ready():
 	#$Pause2/Endurance.set_text(str($Pause2/Endurance.get_text()) + " " + str(endurance))
 	#$Pause2/Agility.set_text(str($Pause2/Agility.get_text()) + " " + str(agility))
 	if experience == 0:
-		$Pause2/Upgrade_strenght.disabled = true
-		$Pause2/Upgrade_agility.disabled = true
-		$Pause2/Upgrade_endurance.disabled = true
+		#$Pause2/Upgrade_strenght.disabled = true
+		#$Pause2/Upgrade_agility.disabled = true
+		#$Pause2/Upgrade_endurance.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_agility.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_endurance.disabled = true
 	
 func hit_by_bullet(damage):
 	velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -104,7 +111,18 @@ func end_of_hit():
 		can_move = true
 		$AttackArea/AttackTimer.start()
 
+
+
 func _physics_process(delta):
+	#if pause:
+		#print(1)
+		#get_tree().paused = true
+		#pause_menu.show()
+	#elif not pause:
+		#print(2)
+		#get_tree().paused = false
+		#pause_menu.hide()
+
 	
 	if current_hp <= 0:
 		is_dead = true
@@ -164,18 +182,18 @@ func _physics_process(delta):
 		#get_tree().paused = false
 		#pause_menu.hide()
 	if experience != 0:
-		$Pause2/Experience_value.set_text(' ' + str(experience))
-		$Pause2/Upgrade_strenght.disabled = false
-		$Pause2/Upgrade_agility.disabled = false
-		$Pause2/Upgrade_endurance.disabled = false
+		$CanvasLayer/Control/Pause2/Experience_value.set_text(' ' + str(experience))
+		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = false
+		$CanvasLayer/Control/Pause2/Upgrade_agility.disabled = false
+		$CanvasLayer/Control/Pause2/Upgrade_endurance.disabled = false
 	
 	if coins != 0:
-		$Pause2/Coins_Value.set_text(' ' + str(coins))
+		$CanvasLayer/Control/Pause2/Coins_Value.set_text(' ' + str(coins))
 		
 	if experience == 0:
-		$Pause2/Upgrade_strenght.disabled = true
-		$Pause2/Upgrade_agility.disabled = true
-		$Pause2/Upgrade_endurance.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_agility.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_endurance.disabled = true
 	
 func _on_timer_timeout():
 	is_hitted = false
@@ -188,33 +206,33 @@ func _on_attack_timer_timeout():
 
 func _on_upgrade_strenght_pressed():
 	strenght += 1
-	$Pause2/Strenght_value.set_text(str(strenght))
+	$CanvasLayer/Control/Pause2/Strenght_value.set_text(str(strenght))
 	experience -= 1
-	$Pause2/Experience_value.set_text(' ' + str(experience))
+	$CanvasLayer/Control/Pause2/Experience_value.set_text(' ' + str(experience))
 	if experience == 0:
-		$Pause2/Upgrade_strenght.disabled = true
-		$Pause2/Upgrade_agility.disabled = true
-		$Pause2/Upgrade_endurance.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_agility.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_endurance.disabled = true
 
 func _on_upgrade_agility_pressed():
 	agility += 1
-	$Pause2/Agility_value.set_text(str(agility))
+	$CanvasLayer/Control/Pause2/Agility_value.set_text(str(agility))
 	experience -= 1
-	$Pause2/Experience_value.set_text(' ' + str(experience))
+	$CanvasLayer/Control/Pause2/Experience_value.set_text(' ' + str(experience))
 	if experience == 0:
-		$Pause2/Upgrade_strenght.disabled = true
-		$Pause2/Upgrade_agility.disabled = true
-		$Pause2/Upgrade_endurance.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_agility.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_endurance.disabled = true
 
 func _on_upgrade_endurance_pressed():
 	endurance += 1
-	$Pause2/Endurance_value.set_text(str(endurance))
+	$CanvasLayer/Control/Pause2/Endurance_value.set_text(str(endurance))
 	experience -= 1
-	$Pause2/Experience_value.set_text(' ' + str(experience))
+	$CanvasLayer/Control/Pause2/Experience_value.set_text(' ' + str(experience))
 	if experience == 0:
-		$Pause2/Upgrade_strenght.disabled = true
-		$Pause2/Upgrade_agility.disabled = true
-		$Pause2/Upgrade_endurance.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_agility.disabled = true
+		$CanvasLayer/Control/Pause2/Upgrade_endurance.disabled = true
 
 
 func _on_jump_pressed():
@@ -250,3 +268,17 @@ func _on_attack_pressed():
 		attacking = true
 
 
+func _on_pause_pressed():
+	get_tree().paused = true
+	pause_menu.show()
+
+
+func _on_resume_pressed():
+	get_tree().paused = false
+	pause_menu.hide()
+
+
+
+#func _on_button_pressed():
+	##get_tree().paused = false
+	#pause_menu.hide()

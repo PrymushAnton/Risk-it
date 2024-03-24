@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bk13c0rihgxgr" path="res://traps/black_acid/black_acid.tscn" id="4_gyq3t"]
 [ext_resource type="Texture2D" uid="uid://dtgu05cysel2p" path="res://level_guide/acids_bigger.png" id="4_th8qi"]
 [ext_resource type="Texture2D" uid="uid://bynkc2ci46ucj" path="res://level_guide/chain.png" id="5_6hfmu"]
-[ext_resource type="PackedScene" uid="uid://bnib0e0hgijxt" path="res://player/player_scene.tscn" id="6_fg0oh"]
+[ext_resource type="PackedScene" uid="uid://xheu45p4a0kr" path="res://player/player_scene.tscn" id="6_fg0oh"]
 [ext_resource type="Texture2D" uid="uid://c1032ol0u62ru" path="res://level_guide/earth_platform.png" id="7_kky4o"]
 [ext_resource type="PackedScene" uid="uid://dd8ghftla2r0t" path="res://goblin/goblin_green.tscn" id="9_lw02s"]
 [ext_resource type="PackedScene" uid="uid://m8xpg1dm31w4" path="res://traps/spikes/spikes.tscn" id="9_npxck"]
