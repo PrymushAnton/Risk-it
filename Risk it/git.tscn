@@ -47,14 +47,14 @@ layout_mode = 2
 size_flags_vertical = 6
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 75
-text = "Грати"
+text = "Play"
 
 [node name="Button2" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 75
-text = "Вийти"
+text = "Quit"
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

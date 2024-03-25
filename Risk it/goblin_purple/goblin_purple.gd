@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var strenght = 30
-@export var health = 150
+@export var strenght = 20
+@export var health = 70
 @export var speed = 150
 @export var X: int
 @export var Y: int
 @export var jump_velocity: int
-@export var is_rotated: bool
+@export var is_rotated = true
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_player

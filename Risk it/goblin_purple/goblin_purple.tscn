@@ -10,7 +10,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_865cr"]
 radius = 22.0
-height = 60.0
+height = 56.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jkie"]
 atlas = ExtResource("1_dtxm4")
@@ -506,31 +506,32 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j1rjv"]
-radius = 23.0
-height = 64.0
+radius = 21.0
+height = 53.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3sr21"]
-size = Vector2(8, 10)
+size = Vector2(8, 31.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fucu"]
-size = Vector2(8, 18.8235)
+size = Vector2(8, 31.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isu8y"]
-size = Vector2(232.059, 64)
+size = Vector2(187.824, 64)
 
 [node name="GoblinPurple" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
+collision_layer = 2
 script = ExtResource("1_18b35")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0.5, 4.75)
 shape = SubResource("CapsuleShape2D_865cr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -40)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_i85om")
-animation = &"hit"
+animation = &"idle"
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -542,7 +543,7 @@ libraries = {
 position = Vector2(5.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-5, 0)
+position = Vector2(-5, 4.75)
 shape = SubResource("CapsuleShape2D_j1rjv")
 
 [node name="Timer" type="Timer" parent="Hitbox"]
@@ -552,7 +553,7 @@ one_shot = true
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(28, 8)
+position = Vector2(28, 5.625)
 shape = SubResource("RectangleShape2D_3sr21")
 
 [node name="TimerAttack" type="Timer" parent="AttackArea"]
@@ -562,13 +563,13 @@ one_shot = true
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(28, 9.41177)
+position = Vector2(28, 5.625)
 shape = SubResource("RectangleShape2D_8fucu")
 
 [node name="EyeSightArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSightArea"]
-position = Vector2(72.2058, 0)
+position = Vector2(50.0882, 0)
 shape = SubResource("RectangleShape2D_isu8y")
 
 [connection signal="timeout" from="Hitbox/Timer" to="." method="_on_timer_timeout"]

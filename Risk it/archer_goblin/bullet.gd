@@ -10,6 +10,7 @@ var direction: int = 0
 
 func _ready():
 	player = get_node("/root/Node2D/CharacterBody2D")
+	$Timer.start()
 	initial_direction = sign(player.position.x - position.x)
 
 func _physics_process(delta):
@@ -29,3 +30,8 @@ func _on_area_entered(area):
 	if area.get_parent().is_in_group("Player") and area.name == "Hitbox":
 		area.get_parent().hit_by_bullet(10)
 		queue_free()
+
+
+
+func _on_timer_timeout():
+	queue_free()

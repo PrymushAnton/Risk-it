@@ -489,7 +489,7 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pguhn"]
 radius = 31.0
-height = 90.0
+height = 110.769
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1hbd"]
 size = Vector2(432, 96)
@@ -499,6 +499,7 @@ radius = 32.0
 height = 96.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(1.3, 1.3)
 collision_layer = 2
 script = ExtResource("1_grfv7")
 
@@ -506,7 +507,7 @@ script = ExtResource("1_grfv7")
 position = Vector2(0, -72)
 scale = Vector2(5.033, 5)
 sprite_frames = SubResource("SpriteFrames_sl8wt")
-animation = &"Run"
+animation = &"Idle"
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -515,6 +516,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_pguhn")
 
 [node name="Area2D" type="Area2D" parent="."]

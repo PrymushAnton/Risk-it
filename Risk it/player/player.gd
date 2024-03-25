@@ -2,16 +2,16 @@ extends CharacterBody2D
 
 var pause_menu
 
-var strenght = 50
+var strenght = 5
 
-var agility = 10
+var agility = 5
 
-var endurance = 1234123131
+var endurance = 25
 var current_hp
 
-var experience: int
+var experience = 0
 
-var coins: int
+var coins = 0
 
 var lable
 var lable_text
@@ -122,13 +122,14 @@ func _physics_process(delta):
 		#print(2)
 		#get_tree().paused = false
 		#pause_menu.hide()
-
-	
+	if current_hp < endurance:
+		current_hp = current_hp + endurance * 0.0005
+	print(current_hp)
 	if current_hp <= 0:
 		is_dead = true
 	
 	if end_of_first:
-		get_tree().change_scene_to_file("res://shop.tscn")
+		get_tree().change_scene_to_file('res://win_scene.tscn')
 	
 	if can_end_jump:
 		if is_on_floor():
@@ -181,6 +182,9 @@ func _physics_process(delta):
 	#elif not pause:
 		#get_tree().paused = false
 		#pause_menu.hide()
+	$CanvasLayer/Control/Pause2/Strenght_value.set_text(str(strenght))
+	$CanvasLayer/Control/Pause2/Agility_value.set_text(str(agility))
+	$CanvasLayer/Control/Pause2/Endurance_value.set_text(str(endurance))
 	if experience != 0:
 		$CanvasLayer/Control/Pause2/Experience_value.set_text(' ' + str(experience))
 		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = false
@@ -189,8 +193,11 @@ func _physics_process(delta):
 	
 	if coins != 0:
 		$CanvasLayer/Control/Pause2/Coins_Value.set_text(' ' + str(coins))
+	elif coins == 0:
+		$CanvasLayer/Control/Pause2/Coins_Value.set_text(' ' + str(coins))
 		
 	if experience == 0:
+		$CanvasLayer/Control/Pause2/Experience_value.set_text(' ' + str(experience))
 		$CanvasLayer/Control/Pause2/Upgrade_strenght.disabled = true
 		$CanvasLayer/Control/Pause2/Upgrade_agility.disabled = true
 		$CanvasLayer/Control/Pause2/Upgrade_endurance.disabled = true
@@ -205,6 +212,7 @@ func _on_attack_timer_timeout():
 # ошибка в добавлении
 
 func _on_upgrade_strenght_pressed():
+	print(1)
 	strenght += 1
 	$CanvasLayer/Control/Pause2/Strenght_value.set_text(str(strenght))
 	experience -= 1
@@ -282,3 +290,7 @@ func _on_resume_pressed():
 #func _on_button_pressed():
 	##get_tree().paused = false
 	#pause_menu.hide()
+
+
+func _on_main_menu_pressed():
+	get_tree().change_scene_to_file('res://git.tscn')

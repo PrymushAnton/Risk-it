@@ -11,5 +11,9 @@ func _process(delta):
 	pass
 
 
-func _on_button_2_pressed():
-	get_tree().change_scene_to_file("res://shop.tscn")
+func _on_try_again_pressed():
+	get_tree().change_scene_to_file("res://level_guide/level_guide.tscn")
+
+
+func _on_main_menu_pressed():
+	get_tree().change_scene_to_file("res://git.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bnib0e0hgijxt"]
+[gd_scene load_steps=60 format=3 uid="uid://bnib0e0hgijxt"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vs1fx"]
 [ext_resource type="Texture2D" uid="uid://dw3eg630pqv0w" path="res://player/assets/healthbarUnder.png" id="6_0i3q2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d2ud4efohymro" path="res://player/assets/Char-airattack.png" id="11_8hgha"]
 [ext_resource type="PackedScene" uid="uid://cusqpmu5gub40" path="res://shop/shop.tscn" id="12_0icax"]
 [ext_resource type="Texture2D" uid="uid://bkb3v8lfbxen1" path="res://player/assets/attack_button.png" id="12_1gftp"]
+[ext_resource type="Texture2D" uid="uid://bhettkfa3flwt" path="res://player/assets/scroll.png" id="12_kslsx"]
 [ext_resource type="Texture2D" uid="uid://cohx8t6ui4sqw" path="res://player/assets/Char-death.png" id="12_lwfl7"]
 [ext_resource type="Texture2D" uid="uid://cxc0pt6kdtvxm" path="res://player/assets/Char-hit.png" id="13_f1pte"]
 [ext_resource type="Texture2D" uid="uid://dgc7kr0mrud0c" path="res://player/assets/attack_button_pressed.png" id="13_ky7rd"]
@@ -337,7 +338,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_xfop8"]
 resource_name = "hit"
-length = 0.3
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -357,7 +358,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
@@ -474,19 +475,19 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xgtm"]
 radius = 19.0
-height = 94.0
+height = 76.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn6jw"]
 size = Vector2(29.1765, 55)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l1rph"]
 radius = 19.0
-height = 90.0
+height = 74.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 visibility_layer = 2
 position = Vector2(0, -1)
-scale = Vector2(1.7, 1.7)
+scale = Vector2(2, 2)
 collision_mask = 3
 script = ExtResource("1_vs1fx")
 
@@ -510,43 +511,32 @@ offset_bottom = 128.0
 grow_horizontal = 0
 
 [node name="pause" type="TouchScreenButton" parent="CanvasLayer/Control/BoxContainer3"]
-position = Vector2(104, 72)
+process_mode = 3
+position = Vector2(104, 104)
 rotation = -3.14159
-scale = Vector2(3.4, 3.4)
+scale = Vector2(5, 5)
 texture_normal = ExtResource("9_t84bf")
 texture_pressed = ExtResource("14_64kpx")
-
-[node name="BoxContainer5" type="BoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -200.0
-grow_horizontal = 0
-grow_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -184.0
-offset_right = 448.0
+offset_top = -264.0
+offset_right = 600.0
 grow_vertical = 0
 
 [node name="left" type="TouchScreenButton" parent="CanvasLayer/Control/HBoxContainer"]
-position = Vector2(237, 97)
+position = Vector2(274, 162)
 rotation = 3.14159
-scale = Vector2(6.8, 6.8)
+scale = Vector2(10, 10)
 texture_normal = ExtResource("10_3rsdy")
 texture_pressed = ExtResource("11_4k6xx")
 
 [node name="right" type="TouchScreenButton" parent="CanvasLayer/Control/HBoxContainer"]
-position = Vector2(339, -12)
-scale = Vector2(6.8, 6.8)
+position = Vector2(438, 2)
+scale = Vector2(10, 10)
 texture_normal = ExtResource("10_3rsdy")
 texture_pressed = ExtResource("11_4k6xx")
 
@@ -560,6 +550,7 @@ scale = Vector2(4, 4)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+step = 0.01
 texture_under = ExtResource("6_0i3q2")
 texture_progress = ExtResource("7_llgjn")
 script = ExtResource("16_lmvjw")
@@ -571,23 +562,23 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -520.0
-offset_top = -388.0
+offset_left = -576.0
+offset_top = -440.0
 grow_horizontal = 0
 grow_vertical = 0
 columns = 2
 
 [node name="attack" type="TouchScreenButton" parent="CanvasLayer/Control/GridContainer"]
-position = Vector2(237, 64)
+position = Vector2(223, 7.99994)
 rotation = 1.5708
-scale = Vector2(6.8, 6.8)
+scale = Vector2(10, 10)
 texture_normal = ExtResource("12_1gftp")
 texture_pressed = ExtResource("13_ky7rd")
 
 [node name="jump" type="TouchScreenButton" parent="CanvasLayer/Control/GridContainer"]
-position = Vector2(320, 301)
+position = Vector2(337, 352)
 rotation = -1.5708
-scale = Vector2(6.8, 6.8)
+scale = Vector2(10, 10)
 texture_normal = ExtResource("10_3rsdy")
 texture_pressed = ExtResource("11_4k6xx")
 
@@ -600,15 +591,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -230.5
-offset_top = -270.5
+offset_top = -178.5
 offset_right = 230.5
-offset_bottom = 270.5
+offset_bottom = 178.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Pause2"]
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -623,22 +615,34 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_0tp6b")
 
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/Pause2"]
+layout_mode = 0
+offset_right = 461.0
+offset_bottom = 352.0
+texture = ExtResource("12_kslsx")
+
 [node name="Experience" type="Label" parent="CanvasLayer/Control/Pause2"]
-offset_left = 70.3239
-offset_top = 70.0882
-offset_right = 160.324
-offset_bottom = 93.0882
+layout_mode = 0
+offset_left = 72.5
+offset_top = 42.5
+offset_right = 211.5
+offset_bottom = 77.5
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "Experience:"
 
 [node name="Experience_value" type="Label" parent="CanvasLayer/Control/Pause2"]
-offset_left = 161.5
-offset_top = 69.5
-offset_right = 201.5
-offset_bottom = 92.5
+layout_mode = 0
+offset_left = 211.0
+offset_top = 42.0
+offset_right = 251.0
+offset_bottom = 77.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 
 [node name="Coins" type="Label" parent="CanvasLayer/Control/Pause2"]
+visible = false
+layout_mode = 0
 offset_left = 321.5
 offset_top = 70.0882
 offset_right = 368.5
@@ -647,6 +651,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Coins:"
 
 [node name="Coins_Value" type="Label" parent="CanvasLayer/Control/Pause2"]
+visible = false
+layout_mode = 0
 offset_left = 370.324
 offset_top = 70.6764
 offset_right = 399.324
@@ -654,96 +660,91 @@ offset_bottom = 93.6764
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="Upgrade_strenght" type="Button" parent="CanvasLayer/Control/Pause2"]
-offset_left = 312.382
-offset_top = 180.677
-offset_right = 387.382
-offset_bottom = 211.677
+process_mode = 3
+layout_mode = 0
+offset_left = 76.0
+offset_top = 115.0
+offset_right = 386.0
+offset_bottom = 147.0
 text = "Upgrade"
 
 [node name="Upgrade_agility" type="Button" parent="CanvasLayer/Control/Pause2"]
-offset_left = 312.382
-offset_top = 213.382
-offset_right = 387.382
-offset_bottom = 244.382
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 76.0
+offset_top = 199.0
+offset_right = 387.0
+offset_bottom = 230.0
 text = "Upgrade"
 
 [node name="Upgrade_endurance" type="Button" parent="CanvasLayer/Control/Pause2"]
-offset_left = 312.382
-offset_top = 246.912
-offset_right = 387.382
-offset_bottom = 277.912
+process_mode = 3
+layout_mode = 0
+offset_left = 76.0
+offset_top = 192.0
+offset_right = 386.0
+offset_bottom = 224.0
 text = "Upgrade"
-
-[node name="Gender" type="Label" parent="CanvasLayer/Control/Pause2"]
-self_modulate = Color(0, 0, 0, 1)
-offset_left = 69.735
-offset_top = 121.265
-offset_right = 251.735
-offset_bottom = 156.265
-theme_override_font_sizes/font_size = 25
-text = "Gender: Male"
-uppercase = true
-
-[node name="Age" type="Label" parent="CanvasLayer/Control/Pause2"]
-self_modulate = Color(0, 0, 0, 1)
-offset_left = 72.676
-offset_top = 152.441
-offset_right = 163.676
-offset_bottom = 187.441
-theme_override_font_sizes/font_size = 25
-text = "Age: 27"
-uppercase = true
 
 [node name="Strenght" type="Label" parent="CanvasLayer/Control/Pause2"]
 self_modulate = Color(0, 0, 0, 1)
-offset_left = 73.265
-offset_top = 181.853
-offset_right = 209.265
-offset_bottom = 216.853
+layout_mode = 0
+offset_left = 75.5
+offset_top = 76.5
+offset_right = 211.5
+offset_bottom = 111.5
 theme_override_font_sizes/font_size = 25
 text = "Strenght:"
 uppercase = true
 
 [node name="Strenght_value" type="Label" parent="CanvasLayer/Control/Pause2"]
 self_modulate = Color(0, 0, 0, 1)
-offset_left = 209.147
-offset_top = 183.618
-offset_right = 263.147
-offset_bottom = 218.618
+layout_mode = 0
+offset_left = 214.5
+offset_top = 76.5
+offset_right = 268.5
+offset_bottom = 111.5
 theme_override_font_sizes/font_size = 25
 uppercase = true
 
 [node name="Endurance" type="Label" parent="CanvasLayer/Control/Pause2"]
 self_modulate = Color(0, 0, 0, 1)
-offset_left = 72.088
-offset_top = 244.206
-offset_right = 234.088
-offset_bottom = 279.206
+layout_mode = 0
+offset_left = 75.0
+offset_top = 151.206
+offset_right = 237.0
+offset_bottom = 186.206
 theme_override_font_sizes/font_size = 25
 text = "Endurance:"
 uppercase = true
 
 [node name="Endurance_value" type="Label" parent="CanvasLayer/Control/Pause2"]
 self_modulate = Color(0, 0, 0, 1)
-offset_left = 235.5
-offset_top = 245.853
-offset_right = 298.5
-offset_bottom = 280.853
+layout_mode = 0
+offset_left = 239.5
+offset_top = 151.0
+offset_right = 302.5
+offset_bottom = 186.0
 theme_override_font_sizes/font_size = 25
 uppercase = true
 
 [node name="Agility" type="Label" parent="CanvasLayer/Control/Pause2"]
+visible = false
 self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
 offset_left = 73.265
-offset_top = 213.618
+offset_top = 162.618
 offset_right = 174.265
-offset_bottom = 248.618
+offset_bottom = 197.618
 theme_override_font_sizes/font_size = 25
 text = "Agility:"
 uppercase = true
 
 [node name="Agility_value" type="Label" parent="CanvasLayer/Control/Pause2"]
+visible = false
 self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
 offset_left = 175.5
 offset_top = 215.853
 offset_right = 257.5
@@ -751,113 +752,32 @@ offset_bottom = 250.853
 theme_override_font_sizes/font_size = 25
 uppercase = true
 
-[node name="Items" type="Label" parent="CanvasLayer/Control/Pause2"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0181518
-anchor_top = -0.0453074
-anchor_right = -0.0181518
-anchor_bottom = -0.0453074
-offset_left = 214.779
-offset_top = 296.155
-offset_right = 288.779
-offset_bottom = 331.155
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "Items"
-uppercase = true
-
-[node name="Name" type="Label" parent="CanvasLayer/Control/Pause2"]
-self_modulate = Color(0, 0, 0, 1)
-offset_left = 69.5
-offset_top = 90.8529
-offset_right = 225.5
-offset_bottom = 125.853
-theme_override_font_sizes/font_size = 25
-text = "Name: Leon"
-uppercase = true
-
-[node name="SwordP" type="Panel" parent="CanvasLayer/Control/Pause2"]
-offset_left = 128.559
-offset_top = 336.088
-offset_right = 153.559
-offset_bottom = 361.088
-
-[node name="ArmorP" type="Panel" parent="CanvasLayer/Control/Pause2"]
-offset_left = 128.559
-offset_top = 366.677
-offset_right = 153.559
-offset_bottom = 391.677
-
-[node name="RingP" type="Panel" parent="CanvasLayer/Control/Pause2"]
-offset_left = 128.559
-offset_top = 396.677
-offset_right = 153.559
-offset_bottom = 421.677
-
-[node name="Sword" type="Label" parent="CanvasLayer/Control/Pause2"]
-offset_left = 73.265
-offset_top = 334.324
-offset_right = 128.265
-offset_bottom = 369.324
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Sword:"
-
-[node name="Armor" type="Label" parent="CanvasLayer/Control/Pause2"]
-offset_left = 72.676
-offset_top = 365.5
-offset_right = 127.676
-offset_bottom = 390.5
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Armor:"
-
-[node name="Ring" type="Label" parent="CanvasLayer/Control/Pause2"]
-offset_left = 88.5
-offset_top = 395.382
-offset_right = 127.5
-offset_bottom = 422.382
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ring:"
-
-[node name="hr" type="Panel" parent="CanvasLayer/Control/Pause2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0133111
-anchor_top = -0.0531401
-anchor_right = -0.0133111
-anchor_bottom = -0.0531401
-offset_left = 98.9233
-offset_top = 336.764
-offset_right = 392.923
-offset_bottom = 349.764
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Paused" type="Label" parent="CanvasLayer/Control/Pause2"]
-offset_left = 203.265
-offset_top = 29.5
-offset_right = 260.265
-offset_bottom = 53.5
+layout_mode = 0
+offset_left = 205.5
+offset_top = 12.5
+offset_right = 262.5
+offset_bottom = 36.5
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="Shop" type="Button" parent="CanvasLayer/Control/Pause2"]
-offset_left = 133.853
-offset_top = 435.971
-offset_right = 328.853
-offset_bottom = 467.971
-text = "Shop
-"
+[node name="Main menu" type="Button" parent="CanvasLayer/Control/Pause2"]
+process_mode = 3
+layout_mode = 0
+offset_left = 76.0
+offset_top = 252.5
+offset_right = 386.0
+offset_bottom = 284.5
+text = "Main Menu"
 
 [node name="Resume" type="Button" parent="CanvasLayer/Control/Pause2"]
 process_mode = 3
-offset_left = 189.147
-offset_top = 493.618
-offset_right = 259.147
-offset_bottom = 524.618
+layout_mode = 0
+offset_left = 200.0
+offset_top = 313.5
+offset_right = 270.0
+offset_bottom = 344.5
 mouse_default_cursor_shape = 2
 text = "Resume
 "
@@ -875,7 +795,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 8.5)
 shape = SubResource("CapsuleShape2D_8xgtm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -898,6 +818,7 @@ wait_time = 0.5
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 8.5)
 shape = SubResource("CapsuleShape2D_l1rph")
 
 [node name="Timer" type="Timer" parent="Hitbox"]
@@ -932,6 +853,7 @@ icon_alignment = 1
 [connection signal="pressed" from="CanvasLayer/Control/Pause2/Upgrade_strenght" to="." method="_on_upgrade_strenght_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause2/Upgrade_agility" to="." method="_on_upgrade_agility_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause2/Upgrade_endurance" to="." method="_on_upgrade_endurance_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Pause2/Main menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause2/Resume" to="." method="_on_resume_pressed"]
 [connection signal="timeout" from="AttackArea/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Hitbox/Timer" to="." method="_on_timer_timeout"]

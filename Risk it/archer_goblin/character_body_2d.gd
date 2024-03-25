@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = get_node('AnimatedSprite2D')
 
 @export var speed = 100
-@export var is_rotated: bool
-@export var strenght = 10
+@export var is_rotated = true
+@export var strenght = 7
 @export var health = 30
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -44,6 +44,8 @@ func hit_of_enemy(damage, enemy, flipped):
 
 func death():
 	queue_free()
+	player.experience += 1
+	player.coins += 5
 
 
 func _ready():
