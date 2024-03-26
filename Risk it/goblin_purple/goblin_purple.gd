@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var strenght = 20
-@export var health = 70
+@export var health = 100
 @export var speed = 150
 @export var X: int
 @export var Y: int
@@ -83,6 +83,7 @@ func _physics_process(delta):
 			animation_player.play('run')
 			move_and_slide()
 
+
 	if not is_on_floor() and not is_dead:
 		can_move = false
 		velocity.y += gravity * delta
@@ -96,6 +97,7 @@ func _physics_process(delta):
 		move_and_slide()
 	
 	if attacking and can_attack and not is_dead and not player.is_dead:
+		$Attack.play()
 		animation_player.play("attack")
 		
 	if not can_follow and not is_dead:

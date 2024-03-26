@@ -36,12 +36,17 @@ var attacking = false
 var is_dead = false
 var can_attack = true
 
+var attack_sound
+var step_sound
+
 
 func _ready():
 	animation_player = get_node("AnimationPlayer") 
 	player = get_node('.')
 	current_hp = endurance
 	pause_menu = get_node('CanvasLayer/Control/Pause2')
+	attack_sound = get_node("Attack")
+	step_sound = get_node("Step")
 	#pause_menu = get_node("Pause_panel")
 	
 	#lable = get_node("Control/Strenght")
@@ -99,6 +104,7 @@ func death():
 func end_of_jump():
 	can_end_jump = true
 
+
 func end_of_hit():
 	if not is_hitted:
 		var overlapping_objects = $AttackArea.get_overlapping_areas()
@@ -106,6 +112,7 @@ func end_of_hit():
 		for area in overlapping_objects:
 			if area.get_parent().is_in_group("Enemy") and area.name != 'AttackArea' and area.name != 'DetectionArea' and area.name != 'EyeSightArea' and area.name == "Hitbox":
 				area.get_parent().hit_of_enemy(strenght, area, is_flipped)
+				
 		attacking = false
 		can_attack = false
 		can_move = true
@@ -156,6 +163,10 @@ func _physics_process(delta):
 		if not attacking and not is_hitted and not is_dead:
 			velocity.x = direction * SPEED
 			if is_on_floor():
+				if $Timer_step.time_left <= 0:
+					$Timer_step.start()
+					step_sound.play()
+					
 				animation_player.play('run')
 	else:
 		if not attacking and not is_hitted and not is_dead:
@@ -164,7 +175,9 @@ func _physics_process(delta):
 				animation_player.play('idle')
 	
 	if jumping and is_on_floor() and not attacking and not is_hitted and not is_dead:
+		$Land.play()
 		velocity.y = JUMP_VELOCITY
+		
 		animation_player.play('jump')
 	
 	if is_hitted and not is_dead:
@@ -172,6 +185,7 @@ func _physics_process(delta):
 		move_and_slide()
 		
 	if attacking:
+		attack_sound.play()
 		animation_player.play('attack')
 	
 	if not is_dead and can_move:
@@ -266,8 +280,8 @@ func _on_timer_bullet_timeout():
 	can_move = true
 
 
-func _on_shop_pressed():
-	$Shop.scale = Vector2(0.6, 0.6)
+#func _on_shop_pressed():
+	#$Shop.scale = Vector2(0.6, 0.6)
 
 
 func _on_attack_pressed():
@@ -277,11 +291,13 @@ func _on_attack_pressed():
 
 
 func _on_pause_pressed():
+
 	get_tree().paused = true
 	pause_menu.show()
 
 
 func _on_resume_pressed():
+
 	get_tree().paused = false
 	pause_menu.hide()
 
@@ -293,4 +309,6 @@ func _on_resume_pressed():
 
 
 func _on_main_menu_pressed():
+
+	get_tree().paused = false
 	get_tree().change_scene_to_file('res://git.tscn')

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bnib0e0hgijxt"]
+[gd_scene load_steps=64 format=3 uid="uid://bnib0e0hgijxt"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vs1fx"]
 [ext_resource type="Texture2D" uid="uid://dw3eg630pqv0w" path="res://player/assets/healthbarUnder.png" id="6_0i3q2"]
@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://cyljx61i5kcii" path="res://player/assets/Char-jump.png" id="15_brewu"]
 [ext_resource type="Texture2D" uid="uid://boj47qx75i16b" path="res://player/assets/Char-run-.png" id="16_40use"]
 [ext_resource type="Script" path="res://player/health_bar.gd" id="16_lmvjw"]
+[ext_resource type="AudioStream" uid="uid://bapvox3leywpr" path="res://player/assets/fast-simple-chop-5-6270.mp3" id="22_p666t"]
+[ext_resource type="AudioStream" uid="uid://bfxvucwmgp2y7" path="res://player/assets/rustling-grass-4-101281.mp3" id="23_xbfkn"]
+[ext_resource type="AudioStream" uid="uid://bxh4lpx1kb4wj" path="res://player/assets/jumping_1-6452.mp3" id="24_w1t5v"]
+[ext_resource type="AudioStream" uid="uid://dem8xfry160t4" path="res://player/assets/land-81509.mp3" id="25_heb1u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lex37"]
 atlas = ExtResource("11_8hgha")
@@ -544,7 +548,7 @@ texture_pressed = ExtResource("11_4k6xx")
 layout_mode = 0
 offset_right = 74.0
 offset_bottom = 22.0
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/HBoxContainer2"]
 layout_mode = 2
@@ -590,13 +594,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.5
-offset_top = -178.5
-offset_right = 230.5
-offset_bottom = 178.5
+offset_left = -230.0
+offset_top = -176.5
+offset_right = 230.0
+offset_bottom = 176.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Pause2"]
 process_mode = 3
@@ -842,6 +845,25 @@ offset_bottom = -292.471
 icon = ExtResource("9_t84bf")
 flat = true
 icon_alignment = 1
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_p666t")
+volume_db = 4.229
+
+[node name="Step" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_xbfkn")
+
+[node name="Timer_step" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_w1t5v")
+volume_db = 12.159
+
+[node name="Land" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_heb1u")
+volume_db = 7.939
 
 [connection signal="pressed" from="CanvasLayer/Control/BoxContainer3/pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/left" to="." method="_on_left_pressed"]

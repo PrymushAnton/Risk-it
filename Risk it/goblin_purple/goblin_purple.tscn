@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ktbpe3vr4udt"]
+[gd_scene load_steps=57 format=3 uid="uid://ktbpe3vr4udt"]
 
 [ext_resource type="Script" path="res://goblin_purple/goblin_purple.gd" id="1_18b35"]
 [ext_resource type="Texture2D" uid="uid://cupof2y1it876" path="res://goblin_purple/assets/Goblin-attack (Purple).png" id="1_dtxm4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dyyugh26cceaw" path="res://goblin_purple/assets/Goblin-idle (Purple).png" id="4_0vvhu"]
 [ext_resource type="Texture2D" uid="uid://c0qm3mdiwtquv" path="res://goblin_purple/assets/Goblin-jump (Purple).png" id="5_r0b7a"]
 [ext_resource type="Texture2D" uid="uid://rp2ypqrt2eqk" path="res://goblin_purple/assets/Goblin-run (Purple).png" id="6_gp0dr"]
+[ext_resource type="AudioStream" uid="uid://cc7ikxmufwyq8" path="res://fast-simple-chop-5-6270.mp3" id="8_n124g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_865cr"]
 radius = 22.0
@@ -571,6 +572,9 @@ shape = SubResource("RectangleShape2D_8fucu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSightArea"]
 position = Vector2(50.0882, 0)
 shape = SubResource("RectangleShape2D_isu8y")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_n124g")
 
 [connection signal="timeout" from="Hitbox/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackArea/TimerAttack" to="." method="_on_timer_attack_timeout"]

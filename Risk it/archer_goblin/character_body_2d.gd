@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var speed = 100
 @export var is_rotated = true
 @export var strenght = 7
-@export var health = 30
+@export var health = 15
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var bullet = preload("res://archer_goblin/bullet.tscn")
@@ -139,8 +139,10 @@ func end_of_attack():
 	get_tree().current_scene.add_child(bullet_shoot)
 	$Attack_cooldown.start()
 	attack_cooldown = true
+	$Attack.play()
 
 func start_of_attack():
+	
 	animation.play("Attack")
 	
 func break_of_attack():

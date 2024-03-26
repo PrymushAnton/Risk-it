@@ -11,7 +11,7 @@ func _ready():
 
 func find_velocity():
 	if player:
-		linear_velocity = global_position.direction_to(player.position) * 10
+		linear_velocity = global_position.direction_to(player.position) * 7
 		
 		
 
@@ -27,7 +27,7 @@ func _on_area_2d_body_entered(body):
 	if body.name == 'TileMap':
 		queue_free()
 	if body.is_in_group("Player"):
-		body.hit_by_bullet(20)
+		body.hit_by_bullet(7)
 		queue_free()
 		
 	if body.is_in_group("Enemy"):

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 500
+@export var speed = 600
 
 var movement_vector = Vector2(1, 0)
 var player
@@ -28,7 +28,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_area_entered(area):
 	if area.get_parent().is_in_group("Player") and area.name == "Hitbox":
-		area.get_parent().hit_by_bullet(10)
+		area.get_parent().hit_by_bullet(5)
 		queue_free()
 
 

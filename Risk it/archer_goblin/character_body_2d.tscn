@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cj0rubpivu22d"]
+[gd_scene load_steps=56 format=3 uid="uid://cj0rubpivu22d"]
 
 [ext_resource type="Script" path="res://archer_goblin/character_body_2d.gd" id="1_grfv7"]
 [ext_resource type="Texture2D" uid="uid://v8w24bg3latx" path="res://archer_goblin/assets/GoblinBow-Attack.png" id="2_i6stq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ehau0ly3t0cc" path="res://archer_goblin/assets/GoblinBow-Damage.png" id="4_5c60o"]
 [ext_resource type="Texture2D" uid="uid://dyhxehfrqprjn" path="res://archer_goblin/assets/GoblinBow-Idle.png" id="5_b7qb4"]
 [ext_resource type="Texture2D" uid="uid://3uaatvoucs3t" path="res://archer_goblin/assets/GoblinBow-Run.png" id="6_4cjdl"]
+[ext_resource type="AudioStream" uid="uid://cc7ikxmufwyq8" path="res://fast-simple-chop-5-6270.mp3" id="7_ee8tm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ca2u"]
 atlas = ExtResource("2_i6stq")
@@ -540,6 +541,9 @@ shape = SubResource("CapsuleShape2D_vberd")
 
 [node name="Timer" type="Timer" parent="Hitbox"]
 wait_time = 0.5
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ee8tm")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dd8ghftla2r0t"]
+[gd_scene load_steps=51 format=3 uid="uid://dd8ghftla2r0t"]
 
 [ext_resource type="Texture2D" uid="uid://b4txka6hfp5w1" path="res://goblin/assets/attack/Goblin-attack (Green).png" id="1_itfby"]
 [ext_resource type="Script" path="res://goblin/goblin_green.gd" id="1_p2pki"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd1yvlvsw1eac" path="res://goblin/assets/idle/Goblin-idle (Green).png" id="2_gygtg"]
 [ext_resource type="Texture2D" uid="uid://cdy4eq72g230b" path="res://goblin/assets/death/Goblin-death (Green).png" id="2_w60pm"]
 [ext_resource type="Texture2D" uid="uid://cjk400msg8bkc" path="res://goblin/assets/hit/Goblin-hit (Green).png" id="3_ca32h"]
+[ext_resource type="AudioStream" uid="uid://cc7ikxmufwyq8" path="res://fast-simple-chop-5-6270.mp3" id="7_ct0l4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flhg5"]
 atlas = ExtResource("1_itfby")
@@ -520,6 +521,9 @@ shape = SubResource("RectangleShape2D_nh2qc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSightArea"]
 position = Vector2(75.2941, 1.19209e-07)
 shape = SubResource("RectangleShape2D_42py4")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ct0l4")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Hitbox/Timer" to="." method="_on_timer_timeout"]
