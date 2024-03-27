@@ -168,3 +168,6 @@ func _on_attack_cooldown_timeout():
 
 func _on_timer_timeout():
 	is_hitted = false
+
+
+	

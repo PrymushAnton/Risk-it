@@ -5,13 +5,14 @@ var animation_player
 var hitted_player = false
 
 func _ready():
+	$Launched.play()
 	add_to_group("Bullet")
 	player = get_tree().get_first_node_in_group("Player")
 	animation_player = get_node("AnimationPlayer")
 
 func find_velocity():
 	if player:
-		linear_velocity = global_position.direction_to(player.position) * 7
+		linear_velocity = global_position.direction_to(player.position) * 8
 		
 		
 

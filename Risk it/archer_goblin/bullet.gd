@@ -21,7 +21,7 @@ func _physics_process(delta):
 		$TextureRect.flip_h = false
 		$CollisionShape2D.scale.x = abs($CollisionShape2D.scale.x)
 	var movement_vector = Vector2(initial_direction, 0)
-	position += movement_vector * speed * delta
+	position += movement_vector * speed * delta * 1.5
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()

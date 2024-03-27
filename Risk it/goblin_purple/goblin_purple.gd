@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var strenght = 20
 @export var health = 100
-@export var speed = 150
+@export var speed = 100
 @export var X: int
 @export var Y: int
 @export var jump_velocity: int
@@ -18,6 +18,7 @@ var is_hitted = false
 var can_attack = false
 var can_follow = false
 var is_dead = false
+
 
 func _ready():
 	animation_player = get_node('AnimationPlayer')

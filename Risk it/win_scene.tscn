@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://do2o6nk078c78"]
+[gd_scene load_steps=3 format=3 uid="uid://do2o6nk078c78"]
 
 [ext_resource type="Script" path="res://win_scene.gd" id="1_sy6b6"]
+[ext_resource type="AudioStream" uid="uid://ccbscv0m1klxr" path="res://triumphant-long-6673.mp3" id="2_2de18"]
 
 [node name="WinScene" type="Node2D"]
 script = ExtResource("1_sy6b6")
@@ -54,5 +55,8 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 75
 text = "Main menu"
+
+[node name="Bg" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_2de18")
 
 [connection signal="pressed" from="CanvasLayer2/Control/VBoxContainer/Main menu" to="." method="_on_main_menu_pressed"]

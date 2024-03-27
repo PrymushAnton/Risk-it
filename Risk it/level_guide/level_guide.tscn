@@ -31,7 +31,7 @@ texture = ExtResource("3_ta4il")
 0:4/0 = 0
 0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:4/0/physics_layer_0/angular_velocity = 0.0
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.0313, -8.03125, -12.9047, 7.91076, 12.9688, 7.90625, 12.9931, -7.99915)
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.9922, -8.01563, -12.9922, 8, 12.9922, 7.99219, 13.0156, -7.99219)
 0:2/size_in_atlas = Vector2i(3, 1)
 0:2/0 = 0
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -637,4 +637,4 @@ position = Vector2(6176, 1008)
 position = Vector2(17640, 1192)
 
 [node name="CharacterBody2D" parent="." groups=["Player"] instance=ExtResource("6_fg0oh")]
-position = Vector2(200, 1072)
+position = Vector2(176, 1072)

@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 var pause_menu
 
-var strenght = 5
+var strenght = 125215215
 
 var agility = 5
 
-var endurance = 25
+var endurance = 1512521512
 var current_hp
 
 var experience = 0
@@ -95,6 +95,7 @@ func hit(damage, player_func, flipped):
 	if current_hp <= 0:
 		is_dead = true
 		
+
 func death():
 	Input.action_release("attack")
 	Input.action_release("ui_right")
@@ -130,8 +131,7 @@ func _physics_process(delta):
 		#get_tree().paused = false
 		#pause_menu.hide()
 	if current_hp < endurance:
-		current_hp = current_hp + endurance * 0.0005
-	print(current_hp)
+		current_hp = current_hp + endurance * 0.00005
 	if current_hp <= 0:
 		is_dead = true
 	
@@ -175,7 +175,7 @@ func _physics_process(delta):
 				animation_player.play('idle')
 	
 	if jumping and is_on_floor() and not attacking and not is_hitted and not is_dead:
-		$Land.play()
+		$Jump.play()
 		velocity.y = JUMP_VELOCITY
 		
 		animation_player.play('jump')
@@ -183,7 +183,8 @@ func _physics_process(delta):
 	if is_hitted and not is_dead:
 		animation_player.play("hit")
 		move_and_slide()
-		
+	
+	
 	if attacking:
 		attack_sound.play()
 		animation_player.play('attack')
@@ -312,3 +313,5 @@ func _on_main_menu_pressed():
 
 	get_tree().paused = false
 	get_tree().change_scene_to_file('res://git.tscn')
+
+

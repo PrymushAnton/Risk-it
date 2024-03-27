@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ymc1iyhafo4f"]
+[gd_scene load_steps=4 format=3 uid="uid://ymc1iyhafo4f"]
 
 [ext_resource type="Script" path="res://git.gd" id="1_ytcg2"]
 [ext_resource type="Texture2D" uid="uid://be2mla1njfhmb" path="res://main_menu_bg.jpg" id="2_l1xei"]
+[ext_resource type="AudioStream" uid="uid://bvex8l131mv6x" path="res://papers-186269.mp3" id="3_lvkdc"]
 
 [node name="Git" type="Node2D"]
 script = ExtResource("1_ytcg2")
@@ -55,6 +56,10 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 75
 text = "Quit"
+
+[node name="Bg" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lvkdc")
+volume_db = -6.154
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
