@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 var pause_menu
 
-var strenght = 125215215
+var strenght = 5
 
 var agility = 5
 
-var endurance = 1512521512
+var endurance = 25
 var current_hp
 
 var experience = 0

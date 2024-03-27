@@ -637,4 +637,4 @@ position = Vector2(6176, 1008)
 position = Vector2(17640, 1192)
 
 [node name="CharacterBody2D" parent="." groups=["Player"] instance=ExtResource("6_fg0oh")]
-position = Vector2(176, 1072)
+position = Vector2(182, 1071)

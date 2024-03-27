@@ -28,10 +28,17 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_area_entered(area):
 	if area.get_parent().is_in_group("Player") and area.name == "Hitbox":
-		area.get_parent().hit_by_bullet(5)
+		area.get_parent().hit_by_bullet(3)
 		queue_free()
+
+
 
 
 
 func _on_timer_timeout():
 	queue_free()
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == 'TileMap':
+		queue_free()

@@ -532,14 +532,14 @@ offset_right = 600.0
 grow_vertical = 0
 
 [node name="left" type="TouchScreenButton" parent="CanvasLayer/Control/HBoxContainer"]
-position = Vector2(274, 162)
+position = Vector2(320, 162)
 rotation = 3.14159
 scale = Vector2(10, 10)
 texture_normal = ExtResource("10_3rsdy")
 texture_pressed = ExtResource("11_4k6xx")
 
 [node name="right" type="TouchScreenButton" parent="CanvasLayer/Control/HBoxContainer"]
-position = Vector2(438, 2)
+position = Vector2(442, 2)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("10_3rsdy")
 texture_pressed = ExtResource("11_4k6xx")

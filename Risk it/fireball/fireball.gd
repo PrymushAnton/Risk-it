@@ -28,7 +28,7 @@ func _on_area_2d_body_entered(body):
 	if body.name == 'TileMap':
 		queue_free()
 	if body.is_in_group("Player"):
-		body.hit_by_bullet(7)
+		body.hit_by_bullet(5)
 		queue_free()
 		
 	if body.is_in_group("Enemy"):

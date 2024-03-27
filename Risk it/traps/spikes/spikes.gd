@@ -14,3 +14,5 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group('Player') and area.name != 'AttackArea':
 		area.get_parent().death()
+	if area.get_parent().is_in_group('Enemy') and area.name != 'AttackArea':
+		area.get_parent().queue_free()
