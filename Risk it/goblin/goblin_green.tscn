@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dd8ghftla2r0t"]
+[gd_scene load_steps=51 format=3 uid="uid://dd8ghftla2r0t"]
 
 [ext_resource type="Texture2D" uid="uid://b4txka6hfp5w1" path="res://goblin/assets/attack/Goblin-attack (Green).png" id="1_itfby"]
 [ext_resource type="Script" path="res://goblin/goblin_green.gd" id="1_p2pki"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd1yvlvsw1eac" path="res://goblin/assets/idle/Goblin-idle (Green).png" id="2_gygtg"]
 [ext_resource type="Texture2D" uid="uid://cdy4eq72g230b" path="res://goblin/assets/death/Goblin-death (Green).png" id="2_w60pm"]
 [ext_resource type="Texture2D" uid="uid://cjk400msg8bkc" path="res://goblin/assets/hit/Goblin-hit (Green).png" id="3_ca32h"]
+[ext_resource type="AudioStream" uid="uid://b7k8jn8pm2lso" path="res://goblin/assets/whoosh-6316.mp3" id="7_b21xu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flhg5"]
 atlas = ExtResource("1_itfby")
@@ -247,7 +248,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vda2l"]
 radius = 22.0
-height = 60.0
+height = 58.8182
 
 [sub_resource type="Animation" id="Animation_81rxk"]
 length = 0.001
@@ -456,19 +457,20 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ekbd"]
 radius = 23.0
-height = 64.0
+height = 51.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2u04"]
-size = Vector2(8, 10)
+size = Vector2(8, 27.7727)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh2qc"]
-size = Vector2(8, 18.8235)
+size = Vector2(8, 27.7727)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42py4"]
 size = Vector2(225.882, 64.7059)
 
 [node name="GoblinGreen" type="CharacterBody2D"]
-scale = Vector2(1.7, 1.7)
+scale = Vector2(2.2, 2.2)
+collision_layer = 2
 script = ExtResource("1_p2pki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -479,7 +481,7 @@ animation = &"death"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0, 4.76837e-07)
 shape = SubResource("CapsuleShape2D_vda2l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -491,7 +493,7 @@ libraries = {
 position = Vector2(5.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-5, 0)
+position = Vector2(-5, 6.5)
 shape = SubResource("CapsuleShape2D_4ekbd")
 
 [node name="Timer" type="Timer" parent="Hitbox"]
@@ -501,7 +503,7 @@ one_shot = true
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(28, 8)
+position = Vector2(28, 6.61364)
 shape = SubResource("RectangleShape2D_x2u04")
 
 [node name="TimerAttack" type="Timer" parent="AttackArea"]
@@ -511,7 +513,7 @@ one_shot = true
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(28, 9.41177)
+position = Vector2(28, 6.61364)
 shape = SubResource("RectangleShape2D_nh2qc")
 
 [node name="EyeSightArea" type="Area2D" parent="."]
@@ -519,6 +521,11 @@ shape = SubResource("RectangleShape2D_nh2qc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeSightArea"]
 position = Vector2(75.2941, 1.19209e-07)
 shape = SubResource("RectangleShape2D_42py4")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_b21xu")
+volume_db = 0.57
+pitch_scale = 0.95
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Hitbox/Timer" to="." method="_on_timer_timeout"]

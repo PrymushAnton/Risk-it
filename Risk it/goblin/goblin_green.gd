@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var strenght: int
-@export var health: int
-@export var speed: int
+@export var strenght = 5
+@export var health = 20
+@export var speed = 100
 @export var X: int
 @export var Y: int
 @export var jump_velocity: int
-@export var is_rotated: bool
+@export var is_rotated = true
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_player
@@ -22,8 +22,8 @@ var is_dead = false
 func _ready():
 	animation_player = get_node('AnimationPlayer')
 	player = get_node('/root/Node2D/CharacterBody2D')
-	position.y = Y
-	position.x = X
+	#position.y = Y
+	#position.x = X
 	if is_rotated:
 		$AnimatedSprite2D.flip_h = true
 		$AttackArea.scale.x = abs($AttackArea.scale.x) * -1
@@ -41,10 +41,7 @@ func hit_of_enemy(damage, enemy, flipped):
 	if health <= 0:
 		is_dead = true
 		$CollisionShape2D.set_deferred('disabled', true)
-		
-		
-	
-	
+
 func end_of_hit_of_enemy():
 	if can_attack:
 		var overlapping_objects = $AttackArea.get_overlapping_areas()
@@ -57,15 +54,13 @@ func end_of_hit_of_enemy():
 
 func death():
 	queue_free()
-	player.kill_count += 1
-
+	player.experience += 1
+	player.coins += 3
 
 func _physics_process(delta):
-
 	if player and not attacking and can_follow and not is_dead:
 		var direction_vector = Vector2(player.position.x - position.x, 0).normalized()
 
-		
 		if direction_vector[0] > 0:
 			$AnimatedSprite2D.flip_h = false
 			$AttackArea.scale.x = abs($AttackArea.scale.x)
@@ -82,6 +77,7 @@ func _physics_process(delta):
 			animation_player.play('run')
 			move_and_slide()
 
+
 	if not is_on_floor() and not is_dead:
 		can_move = false
 		velocity.y += gravity * delta
@@ -95,6 +91,7 @@ func _physics_process(delta):
 		move_and_slide()
 	
 	if attacking and can_attack and not is_dead and not player.is_dead:
+		$Attack.play()
 		animation_player.play("attack")
 		
 	if not can_follow and not is_dead:
