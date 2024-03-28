@@ -271,7 +271,7 @@ script = ExtResource("1_ynqsa")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_njqkx")
-animation = &"attack"
+animation = &"run"
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

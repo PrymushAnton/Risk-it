@@ -19,6 +19,9 @@ var attacking = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+#func _ready():
+	#position.x = start_x
+
 
 func shoot():
 
@@ -32,7 +35,6 @@ func shoot():
 	
 
 func _physics_process(delta):
-	
 	if can_shoot and not player.is_dead:
 		if fire_cooldown.is_stopped():
 			if position.x >= player.position.x:
